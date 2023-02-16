@@ -1,0 +1,10 @@
+@import "../../assets/constants.scss";
+.logo {
+    $this: &;
+    @include text-style(40px, 1.2, red, "Gothic", italic);
+    text: {
+        decoration: none 5px;
+        shadow: 1px 2px 3px rgb(21, 8, 71);
+    } 
+
+}

@@ -1,0 +1,108 @@
+@import "../../assets/constants.scss";
+
+.header {
+    position: relative;
+    top: 40px;
+    padding: 15px 0;
+    background: white;
+    // transition: all linear 0.05s;
+    $this: &;
+
+    &_sticky {
+        position: sticky;
+        top: 0;
+    }
+
+/*     @media screen and (max-width: 1279px) {
+        padding-top: 30px;
+    } */
+
+/*     @media screen and (max-width: 767px) {
+        padding: 30px 0 60px;
+    } */
+
+    &__container {
+        max-width: 100vw;
+        margin: 0 auto;
+        padding: 0 50px;
+
+/*         @media screen and (max-width: 1279px) {
+            padding: {
+                left: 30px;
+                right: 30px;
+            }
+        } */
+
+/*         @media screen and (max-width: 512px) {
+            padding: {
+                left: 10px;
+                right: 53px;
+            }
+        } */
+    }
+
+    &__grid {
+        list-style: none;
+        align-items: center;
+        justify-items: start;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr repeat(5, minmax(min-content, max-content));
+        column-gap: 35px;
+        position: relative;
+/* 
+        @media screen and (max-width: 767px) {
+            grid-template-columns: 1fr minmax(min-content, max-content);
+        } */
+    }
+
+    &__link {
+        text-decoration: none;
+        padding-bottom: 4px;
+        @include text-style(20px, (24/15 * 100%), $cycle);
+        transition: 0.2s linear;
+        &:hover {
+            color: blue;
+        }
+
+        &_checked {
+            color: blue;
+/*             border: {
+                bottom: solid 1px $cycle;
+            } */
+        }
+
+/*         @media screen and (max-width: 767px) {
+            display: none;
+        } */
+    }
+
+    &_light {
+        background: white;
+
+        #{$this}__link {
+            @include text-style(20px, (24/15 * 100%));
+            &:hover {
+                color: $cycle;
+            }
+
+            &_checked {
+                @include text-style(
+                    20px,
+                    (24/15 * 100%),
+                    $cycle
+                );
+            }
+        }
+    }
+
+    &__under {
+        position: absolute;
+        border-bottom: 4px solid transparent;
+        // z-index: -1;
+        transition: all .35s ease-in-out;
+        pointer-events: none;
+
+    }
+}

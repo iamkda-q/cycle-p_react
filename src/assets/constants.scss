@@ -1,0 +1,62 @@
+$cycle: rgba(53, 23, 176);
+$NED: #007484;
+$start-screen-gradient: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
+linear-gradient(0deg, #211F20, #211F20);
+
+$arial: "Arial";
+$georgia: "Georgia";
+
+@mixin text-style($size, $line-height, $color: white, $family: "Georgia", $style: normal) {
+    font: {
+        family: $family, sans-serif;
+        weight: 400;
+        size: $size;
+        style: $style;
+    }
+    color: $color;
+    line-height: $line-height;
+}
+
+/* @mixin title ($width, $color, $align) {
+    width: $width;
+    @include text-style($georgia, 35px, 130%, $color);
+    letter-spacing: 0.06em;
+    text-align: $align;
+}
+
+
+@mixin bg-color($color) {
+    width: 100vw;
+    margin-left: calc(calc(100vw - 100%) / -2);
+    background: $color;
+}
+
+@mixin button-hover {
+    transition: background-color 0.2s linear;
+    cursor: pointer;
+    &:hover {
+        background-color: $color-primary-light;
+    }
+    &:active {
+        transform: scale(0.95);
+    }
+
+}
+
+@mixin backPopups {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(41, 41, 41, 0.6);
+    opacity: 1;
+    transition: 0.4s linear;
+    z-index: 1;
+
+    &_hidden {
+        visibility: hidden;
+        opacity: 0;
+    }
+} */
+
