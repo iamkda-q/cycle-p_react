@@ -1,0 +1,13 @@
+.projectBg {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    $this: &;
+
+    &__background {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+    
+}

@@ -12,6 +12,17 @@
     // transition: background linear 2s;
     position: relative;
 
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color:rgba(0, 0, 0, .3);
+    }
+
     &__slide {
         position: absolute;
         width: 100%;
@@ -35,6 +46,7 @@
         justify-content: space-between;
         align-items: flex-start;
         gap: 100px 0;
+        position: relative;
 
 /*         @media screen and (max-width: 964px) {
             flex-direction: column;
@@ -75,7 +87,7 @@
         margin: 0 {
             bottom: 42px;
         }
-        max-width: 310px;
+        width: 600px;
         @include text-style(44px, 130%);
 /* 
         @media screen and (max-width: 512px) {
@@ -85,17 +97,18 @@
     }
 
     &__subtitle {
+        width: 600px;
         margin-bottom: 42px;
-        @include text-style(15px, 160%, $cycle);
+        @include text-style(20px, 160%);
     }
 
-    &__figure {
+/*     &__figure {
         width: (69800%/1200);
         height: (72800%/1200);
         object-fit: cover;
         z-index: 0;
 
-/*         @media screen and (max-width: 964px) {
+        @media screen and (max-width: 964px) {
             width: (56900%/688);
             height: (59300%/688);
             position: relative;
@@ -107,6 +120,6 @@
             height: (27200%/300);
             position: relative;
             left: ((320px-260px)/2 - 10px);
-        } */
-    }
+        }
+    } */
 }
