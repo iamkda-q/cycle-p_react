@@ -1,0 +1,17 @@
+.projects {
+    max-width: 100vw;
+    // min-height: 500px;
+    // background-image: url("../../assets/images/bg1.jpg");
+    $this: &;
+}
+
+.project {
+    max-width: 100%;
+    overflow: hidden;
+    $this: &;
+
+    &__background {
+        
+    }
+    
+}

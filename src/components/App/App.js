@@ -1,6 +1,7 @@
 import "./App.scss"
 import Header from "../Header/Header";
 import Slider from "../Slider/Slider";
+import Project from "../Project/Project";
 
 function App() {
 
@@ -12,8 +13,9 @@ function App() {
         <div className="app">
             <Header />
             <Slider />
-            <div style={{minHeight: "100vh", width: "100px"}}></div>
-            <div style={{minHeight: "100vh", width: "100px"}}></div>
+            <Project />
+            <Project />
+            <Project />
             <div style={{minHeight: "100vh", width: "100px"}}></div>
 
 
