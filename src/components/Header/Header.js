@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Header.scss";
 import Logo from "../Logo/Logo";
 import HeaderLink from "./HeaderLink/HeaderLink";
@@ -6,15 +6,16 @@ import { colors } from "../../utils/constants.js";
 
 function Header() {
     const [coordinates, setCoordinates] = useState({});
+    const headerRef = useRef();
 
     useEffect(() => {
 
         function handleScroll() {
-            const header = document.querySelector(".header");
-            if (window.scrollY > header.getBoundingClientRect().top) {
-                header.classList.add("header_sticky");
+            // const header = document.querySelector(".header");
+            if (window.scrollY > headerRef.current.getBoundingClientRect().top) {
+                headerRef.current.classList.add("header_sticky");
             } else {
-                header.classList.remove("header_sticky");
+                headerRef.current.classList.remove("header_sticky");
             }
         }
 
@@ -42,6 +43,7 @@ function Header() {
     return (
         <header
             id="header"
+            ref={headerRef}
             className="header"
             onMouseOver={getCoordinates}
         >

@@ -12,6 +12,9 @@ function App() {
         <div className="app">
             <Header />
             <Slider />
+            <div style={{minHeight: "100vh", width: "100px"}}></div>
+            <div style={{minHeight: "100vh", width: "100px"}}></div>
+            <div style={{minHeight: "100vh", width: "100px"}}></div>
 
 
         </div>
