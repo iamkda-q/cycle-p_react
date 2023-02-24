@@ -1,0 +1,71 @@
+@import "../../assets/constants.scss";
+
+.product {
+    max-width: 100vw;
+    height: 350px;
+    position: relative;
+
+    &__number {
+        position: absolute;
+        top: 10px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 2px 2px 8px #747a74;
+        @include text-style(32px, 120%, antiquewhite);
+        this: &;
+
+        &_left {
+            left: 0;
+            background-image: linear-gradient(90deg, #6567ec 0%, $cycle 100%);
+            border-radius: 0 15px 15px 0;
+        }
+
+        &_right {
+            right: 0;
+            background-image: linear-gradient(90deg, $cycle 0%, #6567ec 100%);
+            border-radius: 15px 0 0 15px;
+        }
+    }
+
+    &__container {
+        max-width: 1560px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        // gap: 100px 0;
+        // position: relative;
+    }
+
+    &__info {
+        margin: 40px;
+        max-width: 460px;
+        this: &;
+    }
+
+    &__title {
+        margin: 0 {
+            bottom: 42px;
+        }
+        width: 600px;
+        & a {
+            text-decoration: none;
+            @include text-style(30px, 110%, black);
+        }
+    }
+
+    &__subtitle {
+        @include text-style(20px, 160%, black);
+    }
+
+    &__figure {
+        margin: 25px 0;
+        box-sizing: border-box;
+        object-fit: cover;
+        width: 400px;
+        height: 300px;
+    }
+}

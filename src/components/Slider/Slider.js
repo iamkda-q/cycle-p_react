@@ -2,10 +2,19 @@ import "./Slider.scss";
 import { backgrounds, timerBg } from "../../utils/constants.js";
 import { useEffect, useState } from "react";
 
-function Slider() {
+function Slider({ anchorName }) {
     const [bg1, setBg1] = useState(backgrounds[0]);
     const [bg2, setBg2] = useState(backgrounds[-1]);
     const [bgOpacity, setOpacity] = useState(1);
+
+/*     function handleClick(e) {
+        e.preventDefault();
+
+        window.scrollBy({
+            top: top,
+            behavior: "smooth",
+        });
+    } */
 
     useEffect(() => {
         function changeOpacity() {
@@ -41,7 +50,8 @@ function Slider() {
 
     return (
         <section
-            className="slider" /* style={{ backgroundImage: `url(${bg}` }} */
+            className="slider"
+            id={anchorName} /* style={{ backgroundImage: `url(${bg}` }} */
         >
             <div
                 className="slider__slide"
@@ -59,12 +69,13 @@ function Slider() {
             ></div>
             <div className="slider__container">
                 <div className="slider__info">
-                    <h2 className="slider__title">
-                        Научно-производственное предприятие "Цикл Плюс"
-                    </h2>
+                    <h1 className="slider__title">
+                        Научно-производственное предприятие "Цикл&nbsp;Плюс"
+                    </h1>
                     <h3 className="slider__subtitle">
                         Наше предприятие занимается разработкой и производством преобразовательной техники.
                     </h3>
+                    {/* <a className="slider__button" href="#projects" >К продукции</a> */}
                 </div>
             </div>
         </section>

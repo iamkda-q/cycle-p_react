@@ -8,19 +8,21 @@
     // background-position: center;
     margin-top: -80px;
     padding-top: 80px;
-    min-height:100vh;
+    min-height: 65vh;
     // transition: background linear 2s;
     position: relative;
+    border-radius: 0 0 100px 0;
 
     &:before {
-        content: '';
+        content: "";
         display: block;
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        background-color:rgba(0, 0, 0, .3);
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 0 0 100px 0;
     }
 
     &__slide {
@@ -35,6 +37,7 @@
         z-index: -1;
         background-position: center;
         transition: opacity linear 1.5s;
+        border-radius: 0 0 100px 0;
     }
 
     &__container {
@@ -48,7 +51,7 @@
         gap: 100px 0;
         position: relative;
 
-/*         @media screen and (max-width: 964px) {
+        /*         @media screen and (max-width: 964px) {
             flex-direction: column;
             align-items: center;
         }
@@ -56,14 +59,15 @@
         @media screen and (max-width: 767px) {
             padding: 0 10px;
         } */
-
     }
 
     &__info {
-        margin-top: 163px;
-        max-width: 460px;
+        margin-top: 100px;
+        max-width: 80vw;
+        /*         background: rgba(202, 157, 157, 0.8);
+        border-radius: 60px; */
 
-/*         @media screen and (max-width: 1100px) {
+        /*         @media screen and (max-width: 1100px) {
             margin-top: 50px;
         }
 
@@ -85,11 +89,11 @@
 
     &__title {
         margin: 0 {
-            bottom: 42px;
+            bottom: 30px;
         }
-        width: 600px;
-        @include text-style(44px, 130%);
-/* 
+        width: 100%;
+        @include text-style(70px, 130%, antiquewhite);
+        /* 
         @media screen and (max-width: 512px) {
             font-size: 25px;
             max-width: (20000vw/320);
@@ -97,12 +101,46 @@
     }
 
     &__subtitle {
-        width: 600px;
-        margin-bottom: 42px;
-        @include text-style(20px, 160%);
+        width: 40%;
+        margin: 0 {
+            bottom: 42px;
+            left: 10px;
+        }
+        @include text-style(25px, 160%, antiquewhite);
     }
 
-/*     &__figure {
+    &__button {
+        width: 180px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border: 0.5px solid black;
+        border-radius: 15px;
+        cursor: pointer;
+        background-image: linear-gradient(90deg, #6567ec 0%, $cycle 100%);
+        box-shadow: 2px 2px 3px #000700;
+        @include text-style(20px, 160%, antiquewhite);
+        text-decoration: none;
+        margin: 0 {
+            bottom: 10px;
+            left: 10px;
+        }
+        $this: &;
+
+        &:hover {
+            background-image: linear-gradient(270deg, #6567ec 0%, $cycle 100%);
+        }
+
+        &:active {
+            background-image: linear-gradient(270deg, #6567ec 0%, $cycle 100%);
+            box-shadow: 1px 1px 0 0 #0b160b inset,
+                0 -0.5px 0.5px 0 #0b160b inset;
+        }
+    }
+
+    /*     &__figure {
         width: (69800%/1200);
         height: (72800%/1200);
         object-fit: cover;
