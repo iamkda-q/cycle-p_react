@@ -31,7 +31,7 @@ function ProductBg({bgImage}) {
         return () => {
             window.removeEventListener("scroll", bgScroll);
         };
-    });
+    }, []);
 
     return (
         <div

@@ -7,15 +7,6 @@ function Slider({ anchorName }) {
     const [bg2, setBg2] = useState(backgrounds[-1]);
     const [bgOpacity, setOpacity] = useState(1);
 
-/*     function handleClick(e) {
-        e.preventDefault();
-
-        window.scrollBy({
-            top: top,
-            behavior: "smooth",
-        });
-    } */
-
     useEffect(() => {
         function changeOpacity() {
             setOpacity((prev) => (prev === 1 ? 0 : 1));
@@ -51,7 +42,7 @@ function Slider({ anchorName }) {
     return (
         <section
             className="slider"
-            id={anchorName} /* style={{ backgroundImage: `url(${bg}` }} */
+            id={anchorName}
         >
             <div
                 className="slider__slide"

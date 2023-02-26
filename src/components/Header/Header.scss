@@ -10,7 +10,7 @@
 
     &_sticky {
         position: sticky;
-        top: 0;
+        top: 0px;
     }
 
 /*     @media screen and (max-width: 1279px) {
@@ -100,9 +100,9 @@
     &__under {
         position: absolute;
         border-bottom: 4px solid transparent;
-        // z-index: -1;
         transition: all .35s ease-in-out;
         pointer-events: none;
+        border-color: aqua;
 
     }
 }

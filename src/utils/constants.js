@@ -1,3 +1,5 @@
+import uniqid from 'uniqid';
+
 /* Набор фотографий для слайдшоу начальной страницы */
 
 import bg1 from "../assets/images/bg1.jpg";
@@ -24,6 +26,18 @@ const colors = [
     "black",
     "darkblue",
 ];
+
+/* Меню навигации (скелет страницы) */
+
+const menu = [
+    { text: "Главная", anchorName: "main" },
+    { text: "Продукция", anchorName: "products" },
+    { text: "О нас", anchorName: "about" },
+    { text: "Партнеры", anchorName: "partners" },
+    { text: "Контакты", anchorName: "contacts" },
+].map(product => {
+    return {id: uniqid(), ...product}
+});
 
 /* Информация о продукции */
 
@@ -83,6 +97,8 @@ const productsBase = [
         img: bg1,
     }
 
-];
+].map(product => {
+    return {id: uniqid(), ...product}
+});
 
-export { colors, backgrounds, timerBg, productsBase};
+export { colors, backgrounds, timerBg, productsBase, menu};

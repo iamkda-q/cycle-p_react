@@ -1,40 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
+import { menu } from "../../utils/constants";
 import "./Header.scss";
 import Logo from "../Logo/Logo";
 import HeaderLink from "./HeaderLink/HeaderLink";
-import tran from "../../assets/images/transistor.png";
-import { colors } from "../../utils/constants.js";
 
 function Header() {
     const [coordinates, setCoordinates] = useState({});
     const headerRef = useRef();
+    const [isActive, setActive] = useState(false);
+    const [isFontLoad, setFontLoad] = useState(false);
 
-    // function getYInfo() {
-    //     const posY = window.scrollY;
-    //     let activeLink;
-    //     if (
-    //         posY > document.getElementById("main").getBoundingClientRect().top
-    //     ) {
-    //         if (
-    //             posY >
-    //             document.getElementById("products").getBoundingClientRect().top
-    //         ) {
-    //             activeLink = document.querySelector("[href='#products']");
-    //         } else {
-    //             activeLink = document.querySelector("[href='#main']");
-    //         }
-    //         setCoordinates({
-    //             width: activeLink.getBoundingClientRect().width,
-    //             left: activeLink.getBoundingClientRect().left,
-    //             top:
-    //                 activeLink.getBoundingClientRect().top +
-    //                 activeLink.getBoundingClientRect().height -
-    //                 headerRef.current.getBoundingClientRect().top,
-    //             borderColor: colors[Math.floor(Math.random() * colors.length)],
-    //         });
-    //     }
-    // }
+    useEffect(() => {
+        document.fonts.ready.then(() => {
+            console.log("Georgia loaded");
+            setFontLoad(true);
+        });
+    }, []);
 
+    /* Липкий header при скролле */
     useEffect(() => {
         function handleScroll() {
             const posY = window.scrollY;
@@ -44,7 +27,6 @@ function Header() {
             } else {
                 headerRef.current.classList.remove("header_sticky");
             }
-            // getYInfo();
         }
 
         window.addEventListener("scroll", handleScroll);
@@ -54,91 +36,29 @@ function Header() {
         };
     }, []);
 
-    // function handleMouseOver(e) {
-    //     if (e.target.classList.contains("header__link")) {
-    //         const mouseOverCoord = e.target.getBoundingClientRect();
-    //         setCoordinates({
-    //             width: mouseOverCoord.width,
-    //             left: mouseOverCoord.left,
-    //             top:
-    //                 mouseOverCoord.top +
-    //                 mouseOverCoord.height -
-    //                 headerRef.current.getBoundingClientRect().top,
-    //             borderColor: colors[Math.floor(Math.random() * colors.length)],
-    //         });
-    //     }
-    // }
-
-    // function handleMouseOut(e) {
-    //     const posY = window.scrollY;
-    //     const mouseOutCoord = e.target.getBoundingClientRect();
-    //     setCoordinates({
-    //         width: mouseOverCoord.width,
-    //         left: mouseOverCoord.left,
-    //         top:
-    //             mouseOverCoord.top +
-    //             mouseOverCoord.height -
-    //             headerRef.current.getBoundingClientRect().top,
-    //         borderColor: colors[Math.floor(Math.random() * colors.length)],
-    //     });
-    // }
-
     return (
-        <header
-            id="header"
-            ref={headerRef}
-            className="header"
-            // onMouseOver={handleMouseOver}
-            // onMouseOut={getYInfo}
-        >
+        <header id="header" ref={headerRef} className="header">
             <nav className="header__container">
                 <ul className="header__grid">
-                    {/*                     <li>
-                        <img src={tran}style={{width: "50px", height:"50px", objectFit: "contain"}}/>
-                    </li> */}
                     <li>
                         <Logo />
                     </li>
-                    <HeaderLink
-                        text="Главная"
-                        title="main"
-                        anchorName="main"
-                        stickyHeader={headerRef}
-                        currentCoordinates={coordinates}
-                        handleMouse={setCoordinates}
-                    />
-                    <HeaderLink
-                        text="Продукция"
-                        title="products"
-                        anchorName="products"
-                        stickyHeader={headerRef}
-                        currentCoordinates={coordinates}
-                        handleMouse={setCoordinates}
-                    />
-                    <HeaderLink
-                        text="О нас"
-                        title="about"
-                        anchorName="about"
-                        stickyHeader={headerRef}
-                        currentCoordinates={coordinates}
-                        handleMouse={setCoordinates}
-                    />
-                    <HeaderLink
-                        text="Партнеры"
-                        title="partners"
-                        anchorName="partners"
-                        stickyHeader={headerRef}
-                        currentCoordinates={coordinates}
-                        handleMouse={setCoordinates}
-                    />
-                    <HeaderLink
-                        text="Контакты"
-                        title="contacts"
-                        anchorName="contacts"
-                        stickyHeader={headerRef}
-                        currentCoordinates={coordinates}
-                        handleMouse={setCoordinates}
-                    />
+                    {menu
+                        ? menu.map((menuItem, i) => (
+                              <li key={menuItem.id}>
+                                  <HeaderLink
+                                      {...menuItem}
+                                      title={menuItem.anchorName}
+                                      stickyHeader={headerRef}
+                                      active={isActive}
+                                      setActive={setActive}
+                                      handleMouse={setCoordinates}
+                                      isExtreme={i === 0 ? "first" : i === (menu.length - 1) ? "last" : undefined}
+                                      isFontLoad={isFontLoad}
+                                  />
+                              </li>
+                          ))
+                        : null}
                 </ul>
             </nav>
             <span

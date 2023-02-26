@@ -1,41 +1,78 @@
 import React, { useRef, useState, useEffect } from "react";
-import { colors } from "../../../utils/constants.js";
 
 function HeaderLink({
     text,
     title,
     anchorName,
-    active,
+    active, // флаг запрета на изменение позиции указателя для других ссылок при клике и автоматическом скролле до якоря (useState родителя)
+    setActive,
     stickyHeader,
-    currentCoordinates,
     handleMouse,
+    isExtreme,
+    isFontLoad,
 }) {
     const [anchorTarget, setAnchorTarget] = useState(null);
-    
-    const [prevCoordinates, setPrevCoordinates] = useState(null);
-    const headerLinkRef = useRef();
+    const [isClick, setClick] = useState(false);
+    const headerLinkRef = useRef(null);
+
+    /* Расчёт длины и позиции и установка указателя меню */
+    function setPointer() {
+        const rect = headerLinkRef.current.getBoundingClientRect();
+        handleMouse({
+            width: rect.width,
+            left: rect.left,
+            top:
+                rect.top +
+                rect.height -
+                stickyHeader.current.getBoundingClientRect().top,
+        });
+    }
+    /* Получение координат якоря и расчёт верхней границы документа*/
+    function getCoordinates() {
+        const { top: topAnchor, bottom: bottomAnchor } = anchorTarget
+            ? anchorTarget.getBoundingClientRect()
+            : document.getElementById(anchorName).getBoundingClientRect();
+        const topY = stickyHeader.current.classList.contains("header_sticky")
+            ? stickyHeader.current.getBoundingClientRect().height
+            : 0;
+        return [topAnchor, bottomAnchor, topY];
+    }
+
+    /* Подстройка ПОСЛЕ прогрузки шрифта*/
+    useEffect(() => {
+        if (isFontLoad && isExtreme === "first") setPointer();
+    }, [isFontLoad]);
 
     useEffect(() => {
         setAnchorTarget(document.getElementById(anchorName));
     }, [anchorName]);
 
+    /* Движение указателя меню при прокрутке страницы при достижении соответствующего якоря */
     useEffect(() => {
         function handleScroll() {
-            const { top, bottom } = anchorTarget ? anchorTarget.getBoundingClientRect() : document.getElementById(anchorName).getBoundingClientRect();
+            const [topAnchor, bottomAnchor, topY] = getCoordinates();
+
             if (
-                bottom > stickyHeader.current.getBoundingClientRect().height &&
-                top <= stickyHeader.current.getBoundingClientRect().height
+                (isExtreme === "first" &&
+                    -1 <= window.scrollY &&
+                    window.scrollY <= +1 &&
+                    isClick) ||
+                (!isExtreme &&
+                    topY - 1 <= topAnchor &&
+                    topAnchor <= topY + 1 &&
+                    isClick)
             ) {
-                const rect = headerLinkRef.current.getBoundingClientRect();
-                handleMouse({
-                    width: rect.width,
-                    left: rect.left,
-                    top:
-                        rect.top +
-                        rect.height -
-                        stickyHeader.current.getBoundingClientRect().top,
-                    borderColor: colors[Math.floor(Math.random() * colors.length)],
-                });
+                setClick(false);
+                setActive(false);
+            }
+            /* Условие для запрета перемещения указателя после клика во время перемещения к другому якорю */
+            if (
+                !active &&
+                bottomAnchor >
+                    stickyHeader.current.getBoundingClientRect().height &&
+                topAnchor <= stickyHeader.current.getBoundingClientRect().height
+            ) {
+                setPointer();
             }
         }
 
@@ -44,32 +81,44 @@ function HeaderLink({
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [isClick, active]);
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        event.target.classList.add("header__link_active");
-        const { top } = anchorTarget.getBoundingClientRect();
-        window.scrollBy({
-            top:
-                top -
-                (stickyHeader
-                    ? stickyHeader.current.getBoundingClientRect().height
-                    : 0),
-            behavior: "smooth",
-        });
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const [topAnchor, topY] = getCoordinates();
+        /* Условие для игнорирования повторного нажатия на якорную ссылку при "нулевой" позиции якоря*/
+        if (
+            !(
+                isExtreme === "first" &&
+                -1 <= window.scrollY &&
+                window.scrollY <= +1
+            ) &&
+            !(!isExtreme && topY - 1 <= topAnchor && topAnchor <= topY + 1)
+        ) {
+            setActive(true);
+            setClick(true);
+            setPointer();
+            window.scrollBy({
+                top:
+                    topAnchor -
+                    (stickyHeader
+                        ? stickyHeader.current.getBoundingClientRect().height
+                        : 0),
+                behavior: "smooth",
+            });
+        }
     };
 
-    function handleMouseOver(e) {
+    /*     function handleMouseOver(e) {
         setPrevCoordinates(currentCoordinates);
         const rect = e.target.getBoundingClientRect();
         handleMouse({
             width: rect.width,
             left: rect.left,
-            top:
-                rect.top +
+            topAnchor:
+                rect.topAnchor +
                 rect.height -
-                stickyHeader.current.getBoundingClientRect().top,
+                stickyHeader.current.getBoundingClientRect().topAnchor,
             borderColor: colors[Math.floor(Math.random() * colors.length)],
         });
     }
@@ -79,41 +128,39 @@ function HeaderLink({
             e.target.classList.remove("header__link_active");
             return;
         }
-        const { top, bottom } = anchorTarget.getBoundingClientRect();
+        const { topAnchor, bottomAnchor } = anchorTarget.getBoundingClientRect();
         if (
-            bottom > stickyHeader.current.getBoundingClientRect().height &&
-            top <= stickyHeader.current.getBoundingClientRect().height
+            bottomAnchor > stickyHeader.current.getBoundingClientRect().height &&
+            topAnchor <= stickyHeader.current.getBoundingClientRect().height
         ) {
             const rect = e.target.getBoundingClientRect();
             handleMouse({
                 width: rect.width,
                 left: rect.left,
-                top:
-                    rect.top +
+                topAnchor:
+                    rect.topAnchor +
                     rect.height -
-                    stickyHeader.current.getBoundingClientRect().top,
+                    stickyHeader.current.getBoundingClientRect().topAnchor,
                 borderColor: colors[Math.floor(Math.random() * colors.length)],
             });
         } else {
             handleMouse(prevCoordinates);
         }
-    }
+    } */
 
     return (
-        <li>
-            <a
-                ref={headerLinkRef}
-                href={`#${anchorName}`}
-                title={title}
-                className={`header__link`}
-                onClick={handleClick}
-                // onMouseOver={handleMouseOver}
-                // onMouseOut={handleMouseOut}
-            >
-                {text}
-            </a>
-        </li>
+        <a
+            ref={headerLinkRef}
+            href={`#${anchorName}`}
+            title={title}
+            className={`header__link`}
+            onClick={handleClick}
+            // onMouseOver={handleMouseOver}
+            // onMouseOut={handleMouseOut}
+        >
+            {text}
+        </a>
     );
 }
 
-export default HeaderLink;
+export default React.memo(HeaderLink);

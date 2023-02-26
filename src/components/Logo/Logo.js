@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Logo.scss";
 import train from "../../assets/images/train4.jpg"
@@ -11,4 +12,4 @@ function Logo() {
     );
 }
 
-export default Logo;
+export default React.memo(Logo);
