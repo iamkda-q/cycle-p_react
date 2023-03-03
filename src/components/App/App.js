@@ -2,6 +2,7 @@ import "./App.scss";
 import Header from "../Header/Header";
 import Slider from "../Slider/Slider";
 import Products from "../Products/Products";
+import About from "../About/About";
 
 function App() {
 
@@ -10,17 +11,7 @@ function App() {
             <Header />
             <Slider anchorName="main" />
             <Products anchorName="products" />
-            <div
-                id="about"
-                style={{
-                    minHeight: "50vh",
-                    width: "100px",
-                    border: "1px solid black",
-                    boxSizing: "content-box",
-                }}
-            >
-                about
-            </div>
+            <About anchorName="about"/>
             <div
                 style={{
                     minHeight: "50vh",

@@ -1,0 +1,102 @@
+@import "../../assets/constants.scss";
+$barH: 20%;
+$w: 20%;
+.gallery {
+    width: 100%;
+        position: relative;
+        height: 600px;
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+}
+
+.gallery__label {
+    // display: block;
+    width: $w;
+    height: $barH;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // transform-origin: top left;
+}
+
+.gallery__figure {
+    // dislay: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.9);
+}
+
+[type="radio"] {
+    display: none;
+}
+
+:checked + .gallery__label {
+    left: 0;
+    bottom: $barH;
+    height: auto;
+    width: 100%;
+}
+
+:checked + .gallery__label .gallery__figure {
+    object-fit: cover;
+    // transform: scale(0.9);
+}
+
+/* 
+  optional
+  */
+
+  .gallery__wrapper {/*thumbnails bar*/
+    perspective:100px;
+    perspective-origin:center center;
+    transform-style:preserve-3d;
+    pointer-events:none;
+  }
+
+//   .gallery__wrapper:after {/*the plate*/
+//     content:"";
+//     display:block; width:100%; height:15px;
+//     position:absolute; bottom:0;
+//     background:linear-gradient( transparent 20%, rgba(0,0,0,0.1));
+//     transform:rotateX(90deg)scaleX(1.2);
+//     transform-origin:bottom center;
+//   }
+
+  :not(:checked) + .gallery__label {/*inactive labels*/
+    transform:translate3d(0, 0, -5px);
+    pointer-events:auto;
+  }
+
+  :not(:checked) + .gallery__label:hover {
+    transform:translate3d(0, -7px, -5px);
+    box-shadow:0 30px 30px -25px rgba(0,0,0,0.3);
+    cursor:pointer;
+  }
+
+  :not(:checked) + .gallery__label .gallery__figure {
+    transform:scale(0.9);/*create gaps*/
+  }
+
+  :checked + .gallery__label {/*active label*/
+    box-shadow:0 0 0 transparent;
+    animation:anim 1s 1;
+  } 
+  @keyframes anim {
+    from { transform:rotateY(3deg)rotateX(2deg) }
+  }
+
+  /*
+  transitions
+  */
+  .gallery__label {/*active->inactive & hover->rest*/
+    transition:transform 0.5s, bottom 0.6s, left 0.6s, width 0.3s, box-shadow 0.5s;
+  }
+  .gallery__label:hover, :checked + .gallery__label {
+    transition:transform 0.5s, bottom 0.6s, left 0.6s, width 0.3s, box-shadow 0s;
+  }
