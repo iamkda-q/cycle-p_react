@@ -1,12 +1,22 @@
 $cycle: rgba(53, 23, 176);
-$NED: #007484;
-$start-screen-gradient: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
-linear-gradient(0deg, #211F20, #211F20);
+$contactsSectionHeight: 600px;
+$start-screen-gradient: radial-gradient(
+        100% 215.42% at 0% 0%,
+        #5b483a 0%,
+        #262425 100%
+    ),
+    linear-gradient(0deg, #211f20, #211f20);
 
 $arial: "Arial";
 $georgia: "Georgia";
 
-@mixin text-style($size, $line-height, $color: white, $family: "Georgia", $style: normal) {
+@mixin text-style(
+    $size,
+    $line-height,
+    $color: white,
+    $family: "Georgia",
+    $style: normal
+) {
     font: {
         family: $family, sans-serif;
         weight: 400;
@@ -15,6 +25,10 @@ $georgia: "Georgia";
     }
     color: $color;
     line-height: $line-height;
+}
+
+.numbers {
+    font-family: "Times New Roman", Times, serif;
 }
 
 /* @mixin title ($width, $color, $align) {
@@ -59,4 +73,3 @@ $georgia: "Georgia";
         opacity: 0;
     }
 } */
-

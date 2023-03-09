@@ -1,7 +1,7 @@
 import React from "react";
 import "../Gallery.scss";
 
-const GalleryPhoto = ({ id, onChange, value, name, figure, styles }) => {
+const GalleryPhoto = ({ id, onChange, value, name, figure }) => {
     return (
         <>
             <input
@@ -11,7 +11,7 @@ const GalleryPhoto = ({ id, onChange, value, name, figure, styles }) => {
                 checked={value === id}
                 name={name}
             />
-            <label htmlFor={id} className="gallery__label" style={styles}>
+            <label htmlFor={id} className="gallery__label">
                 <img src={figure} alt="" className="gallery__figure"/>
             </label>
         </>

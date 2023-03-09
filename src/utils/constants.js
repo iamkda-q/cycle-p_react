@@ -12,6 +12,12 @@ const backgrounds = [bg1, bg2, bg3, bg4, bg5];
 
 /* Набор фотографий продукции */
 
+/* Набор фотографий секции о нас */
+
+const aboutFigures = backgrounds.map(figure => {
+    return {id: uniqid(), src: figure}
+});;
+
 
 const timerBg = 6000; // время перехода в слайдщоу
 
@@ -101,4 +107,4 @@ const productsBase = [
     return {id: uniqid(), ...product}
 });
 
-export { colors, backgrounds, timerBg, productsBase, menu};
+export { colors, backgrounds, timerBg, productsBase, menu, aboutFigures};

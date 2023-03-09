@@ -1,6 +1,6 @@
 @import "../../assets/constants.scss";
-$barH: 20%;
-$w: 20%;
+$barH: 15%;
+$barB: 10%;
 
 [type="radio"] {
     display: none;
@@ -20,8 +20,7 @@ $w: 20%;
         perspective: 100px;
         perspective-origin: center center;
         transform-style: preserve-3d;
-        pointer-events: none;
-        
+        pointer-events: none;        
 
         // &::after {
         //     content: "";
@@ -37,12 +36,11 @@ $w: 20%;
     }
 
     &__label {
-        width: $w;
         height: $barH;
         position: absolute;
-        bottom: 0;
+        bottom: $barB;
         left: 0;
-        transition: transform 0.5s, bottom 0.6s, left 0.6s, width 0.3s,
+        transition: transform 0.3s, bottom 0.6s, left 0.6s, width 0.3s,
             box-shadow 0.5s;
     }
 
@@ -60,7 +58,7 @@ $w: 20%;
     /* Выбранный чекбокс и всё что внутри */
     :checked + &__label {
         left: 0;
-        bottom: $barH;
+        bottom: $barH + $barB;
         height: auto;
         width: 100%;
         box-shadow: 0 0 0 transparent;
@@ -78,12 +76,12 @@ $w: 20%;
 
         &:hover {
             transform: translate3d(0, -7px, -5px);
-            box-shadow: 0 30px 30px -25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 15px -10px rgba(0, 0, 0, 0.3);
             cursor: pointer;
         }
 
         #{$this}__figure {
-            transform: scale(0.9);
+            transform: scaleX(0.95);
         }
     }
 }

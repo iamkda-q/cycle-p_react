@@ -1,0 +1,96 @@
+@import "../../assets/constants.scss";
+
+.banner {
+    $bannerHeight: 400px;
+    width: 500px;
+    height: $bannerHeight;
+    background-color: #fff;
+    border: 1px solid rgba(234, 234, 234, 1);
+    border-radius: 5px;
+    position: absolute;
+    bottom: $contactsSectionHeight / 2 - ($bannerHeight / 2);
+    left: 12vw;
+
+    $left: 70px;
+    $textSize: 16px;
+
+    &__title {
+        margin: {
+            top: 50px;
+            left: $left;
+        }
+        position: relative;
+        @include text-style(40px, 130%, black);
+
+        &::after {
+            position: absolute;
+            content: "";
+            width: 80px;
+            border: 1px solid black;
+            left: 0;
+            bottom: -30px;
+        }
+    }
+
+    &__part {
+        $iconSize: 30px;
+        padding-left: $left + $iconSize + 10px;
+        margin-top: 28px;
+        display: block;
+        align-items: center;
+        text-decoration: none;
+        @include text-style($textSize, 110%, black);
+        position: relative;
+
+        &:first-of-type {
+            margin-top: 70px;
+        }
+
+        @mixin icon($imageUrl) {
+            &::before {
+                position: absolute;
+                content: "";
+                width: $iconSize;
+                height: $iconSize;
+                left: $left;
+                margin-top: -8px;
+                background: $imageUrl no-repeat center/contain;
+            }
+        }
+
+        &_email {
+            @include icon(url(../../assets/images/mailIcon.png));
+        }
+
+        &_address {
+            @include icon(url(../../assets/images/address.png));
+        }
+
+        &_phone {
+            @include icon(url(../../assets/images/phoneIcon.png));
+        }
+    }
+
+    &__button {
+        width: 160px;
+        height: 40px;
+        border: 1px solid #0b5ea7;
+        border-radius: 0px 15px;
+        cursor: pointer;
+        background-color: transparent;
+        transition: transform 10ms linear;
+        @include text-style($textSize, 110%, #0b5ea7);
+        margin: 0 {
+            left: $left;
+            top: 35px;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(1);
+        }
+    }
+}
