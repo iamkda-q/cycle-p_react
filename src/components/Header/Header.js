@@ -12,7 +12,6 @@ function Header() {
 
     useEffect(() => {
         document.fonts.ready.then(() => {
-            console.log("Georgia loaded");
             setFontLoad(true);
         });
     }, []);

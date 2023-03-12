@@ -4,11 +4,11 @@ import "./Contacts.scss";
 import MyMap from "../MyMap/MyMap";
 import ContactsBanner from "../ContactsBanner/ContactsBanner";
 
-const Contacts = ({ anchorName }) => {
+const Contacts = ({ anchorName, openForm }) => {
     return (
         <section className="contacts" id={anchorName}>
             <MyMap />
-            <ContactsBanner />
+            <ContactsBanner handleClick={openForm}/>
         </section>
     );
 };

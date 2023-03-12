@@ -39,49 +39,58 @@ function HeaderLink({
     }
 
     /* Подстройка ПОСЛЕ прогрузки шрифта*/
-    useEffect(() => {
-        if (isFontLoad && isExtreme === "first") setPointer();
-    }, [isFontLoad]);
+    // useEffect(() => {
+    //     if (isFontLoad && isExtreme === "first") setPointer();
+    // }, [isFontLoad]);
 
     useEffect(() => {
         setAnchorTarget(document.getElementById(anchorName));
     }, [anchorName]);
 
     /* Движение указателя меню при прокрутке страницы при достижении соответствующего якоря */
-    useEffect(() => {
-        function handleScroll() {
-            const [topAnchor, bottomAnchor, topY] = getCoordinates();
+    // useEffect(() => {
+    //     function handleScroll() {
+    //         const [topAnchor, bottomAnchor, topY] = getCoordinates();
 
-            if (
-                (isExtreme === "first" &&
-                    -1 <= window.scrollY &&
-                    window.scrollY <= +1 &&
-                    isClick) ||
-                (!isExtreme &&
-                    topY - 1 <= topAnchor &&
-                    topAnchor <= topY + 1 &&
-                    isClick)
-            ) {
-                setClick(false);
-                setActive(false);
-            }
-            /* Условие для запрета перемещения указателя после клика во время перемещения к другому якорю */
-            if (
-                !active &&
-                bottomAnchor >
-                    stickyHeader.current.getBoundingClientRect().height &&
-                topAnchor <= stickyHeader.current.getBoundingClientRect().height
-            ) {
-                setPointer();
-            }
-        }
+    //         if (
+    //             (isExtreme === "first" &&
+    //                 -1 <= window.scrollY &&
+    //                 window.scrollY <= +1 &&
+    //                 isClick) ||
+    //             (!isExtreme &&
+    //                 (topY - 5 <= topAnchor &&
+    //                     topAnchor <= topY + 5) &&
+    //                 isClick) ||
+    //             document.documentElement.clientHeight + window.scrollY ===
+    //                 document.documentElement.scrollHeight
+    //         ) {
+    //             setClick(false);
+    //             console.log(topY, topAnchor);
+    //             setActive(false);
+    //         }
+    //         /* Условие для запрета перемещения указателя после клика во время перемещения к другому якорю */
+    //         if (
+    //             !active &&
+    //             ((bottomAnchor >
+    //                 stickyHeader.current.getBoundingClientRect().height &&
+    //                 topAnchor <=
+    //                     stickyHeader.current.getBoundingClientRect().height) ||
+    //                 (isExtreme === "last" &&
+    //                     document.documentElement.clientHeight +
+    //                         window.scrollY ===
+    //                         document.documentElement.scrollHeight))
+    //         ) {
+    //             setPointer();
+    //             console.log(headerLinkRef.current)
+    //         }
+    //     }
 
-        window.addEventListener("scroll", handleScroll);
+    //     window.addEventListener("scroll", handleScroll);
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [isClick, active]);
+    //     return () => {
+    //         window.removeEventListener("scroll", handleScroll);
+    //     };
+    // }, [active]);
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -93,11 +102,13 @@ function HeaderLink({
                 -1 <= window.scrollY &&
                 window.scrollY <= +1
             ) &&
-            !(!isExtreme && topY - 1 <= topAnchor && topAnchor <= topY + 1)
+            !(
+                /* !isExtreme &&  */ (
+                    topY - 1 <= topAnchor && topAnchor <= topY + 1
+                )
+            )
         ) {
-            setActive(true);
-            setClick(true);
-            setPointer();
+            await Promise.all([setActive(true), setClick(true)/* , setPointer() */]);
             window.scrollBy({
                 top:
                     topAnchor -

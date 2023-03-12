@@ -40,7 +40,7 @@ function Gallery() {
         <div className="gallery">
             <div className="gallery__wrapper" ref={galleryRef}>
                 {aboutFigures
-                    ? aboutFigures.map((figure, i, arr) => (
+                    ? aboutFigures.map((figure, i) => (
                           <GalleryPhoto
                               key={figure.id}
                               id={`galleryPhoto${i}`}

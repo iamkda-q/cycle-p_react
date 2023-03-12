@@ -1,0 +1,49 @@
+@import "../../assets/constants.scss";
+
+.input {
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    &__label {
+        display: hidden;
+    }
+
+    &__input {
+        padding: 0 {
+            bottom: 9px;
+        }
+        margin: 0 {
+            bottom: 30px;
+        }
+        border: none {
+            bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        width: 100%;
+        @include text-style(16px, 121%, black);
+        outline: none;
+
+        &:last-of-type {
+            margin-bottom: 48px;
+        }
+
+        &_error {
+            border-bottom: 1px solid #ff0000;
+        }
+    }
+
+    &__error {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+        margin: 0;
+        @include text-style(14px, 125%, #ff0000);
+        position: absolute;
+        top: 32px;
+
+        &_hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

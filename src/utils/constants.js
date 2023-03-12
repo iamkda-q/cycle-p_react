@@ -1,4 +1,4 @@
-import uniqid from 'uniqid';
+import uniqid from "uniqid";
 
 /* Набор фотографий для слайдшоу начальной страницы */
 
@@ -14,10 +14,9 @@ const backgrounds = [bg1, bg2, bg3, bg4, bg5];
 
 /* Набор фотографий секции о нас */
 
-const aboutFigures = backgrounds.map(figure => {
-    return {id: uniqid(), src: figure}
-});;
-
+const aboutFigures = backgrounds.map((figure) => {
+    return { id: uniqid(), src: figure };
+});
 
 const timerBg = 6000; // время перехода в слайдщоу
 
@@ -41,8 +40,8 @@ const menu = [
     { text: "О нас", anchorName: "about" },
     { text: "Партнеры", anchorName: "partners" },
     { text: "Контакты", anchorName: "contacts" },
-].map(product => {
-    return {id: uniqid(), ...product}
+].map((product) => {
+    return { id: uniqid(), ...product };
 });
 
 /* Информация о продукции */
@@ -101,10 +100,9 @@ const productsBase = [
         cumque cum mollitia excepturi illo consequatur labor`,
 
         img: bg1,
-    }
-
-].map(product => {
-    return {id: uniqid(), ...product}
+    },
+].map((product) => {
+    return { id: uniqid(), ...product };
 });
 
-export { colors, backgrounds, timerBg, productsBase, menu, aboutFigures};
+export { colors, backgrounds, timerBg, productsBase, menu, aboutFigures };

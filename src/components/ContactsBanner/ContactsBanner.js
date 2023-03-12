@@ -1,7 +1,13 @@
 import React from "react";
 import "./ContactsBanner.scss";
 
-const ContactsBanner = () => {
+const ContactsBanner = ({ handleClick }) => {
+    function pk() {
+        console.log(document.documentElement.clientHeight + window.scrollY);
+        console.log(window.scrollY);
+        console.log(document.documentElement.scrollHeight);
+    }
+
     return (
         <div className="banner">
             <h2 className="banner__title">Контакты</h2>
@@ -14,8 +20,9 @@ const ContactsBanner = () => {
             <p className="banner__part banner__part_phone" title="">
                 <span className="numbers">+7-495-301-44-98</span>
             </p>
-                    <button className="banner__button" >Связаться с нами</button>
-
+            <button className="banner__button" onClick={handleClick}>
+                Связаться с нами
+            </button>
         </div>
     );
 };
