@@ -4,8 +4,7 @@ import ProductBg from "../ProductBg/ProductBg";
 import Product from "../Product/Product";
 
 import { productsBase, backgrounds } from "../../utils/constants.js";
-import bgProductOne from "../../assets/images/bg1.jpg";
-import bgProductSec from "../../assets/images/bg2.jpg";
+import belaz from "../../assets/images/belaz.png";
 
 function Products({ anchorName }) {
     return (

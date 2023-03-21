@@ -3,7 +3,7 @@ import "./ProductBg.scss";
 
 function ProductBg({bgImage}) {
     const productViewRef = useRef();
-    const productViewHeight = "200px";
+    const productViewHeight = +document.documentElement.clientWidth > 899 ? "200px" : "120px";
     const productBgRef = useRef();
     
     const [imgTopOffset, setImgTopOffset] = useState(0);

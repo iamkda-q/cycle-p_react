@@ -45,8 +45,13 @@ const MyMap = () => {
             return;
         }
 
+/*         let coord
+
+        if (+document.documentElement.clientWidth <= 1256) {
+            cycleCoord
+        } */
         const myMap = new ymaps.Map(mapRef.current, {
-            center: cycleCoord,
+            center: +document.documentElement.clientWidth <= 1256 ? [55.745963, 37.821500] : cycleCoord,
             zoom: 16,
             controls: [
                 "zoomControl",

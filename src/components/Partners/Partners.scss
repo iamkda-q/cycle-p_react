@@ -1,14 +1,17 @@
 @import "../../assets/constants.scss";
 
 .partners {
-    margin: 30px 70px;
-    padding-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
-    gap: 35px 100px;
+    gap: 20px 100px;
+    padding: 0 30px;
+
+    @media screen and (max-width: $width899) {
+    }
 
     // @media screen and (max-width: 1279px) {
     //     display: grid;

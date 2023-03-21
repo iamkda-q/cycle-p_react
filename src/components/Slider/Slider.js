@@ -40,10 +40,7 @@ function Slider({ anchorName }) {
     }, [bgOpacity, bg1, bg2]);
 
     return (
-        <section
-            className="slider"
-            id={anchorName}
-        >
+        <section className="slider" id={anchorName}>
             <div
                 className="slider__slide"
                 style={{
@@ -61,10 +58,14 @@ function Slider({ anchorName }) {
             <div className="slider__container">
                 <div className="slider__info">
                     <h1 className="slider__title">
-                        Научно-производственное предприятие "Цикл&nbsp;Плюс"
+                        {document.documentElement.clientWidth > 500
+                            ? `Научно-производственное предприятие "Цикл\xa0Плюс"`
+                            : `НПП\xa0"Цикл\xa0Плюс"`}
+                        {/* \xa0 - неразрывный пробел */}
                     </h1>
                     <h3 className="slider__subtitle">
-                        Наше предприятие занимается разработкой и производством преобразовательной техники.
+                        Наше предприятие занимается разработкой и производством
+                        преобразовательной техники.
                     </h3>
                     {/* <a className="slider__button" href="#projects" >К продукции</a> */}
                 </div>

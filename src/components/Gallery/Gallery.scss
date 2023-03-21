@@ -9,8 +9,13 @@ $barB: 10%;
 .gallery {
     width: 100%;
     position: relative;
-    height: 600px;
+    $checkedHeight: 480px;
+    height: $checkedHeight;
     $this: &;
+
+    @media screen and (max-width: $width1450) {
+        height: 50vw;
+    }
 
     &__wrapper {
         width: 100%;
@@ -20,7 +25,7 @@ $barB: 10%;
         perspective: 100px;
         perspective-origin: center center;
         transform-style: preserve-3d;
-        pointer-events: none;        
+        pointer-events: none;
 
         // &::after {
         //     content: "";
@@ -42,6 +47,11 @@ $barB: 10%;
         left: 0;
         transition: transform 0.3s, bottom 0.6s, left 0.6s, width 0.3s,
             box-shadow 0.5s;
+
+        @media screen and (max-width: $width1450) {
+            height: 20%;
+            bottom: 1%;
+        }
     }
 
     &__figure {
@@ -67,6 +77,10 @@ $barB: 10%;
         #{$this}__figure {
             object-fit: cover;
             transform: scale(0.9);
+        }
+
+        @media screen and (max-width: $width1450) {
+            height: 38vw;
         }
     }
     /* Невыбранные чекбоксы и всё что внутри */

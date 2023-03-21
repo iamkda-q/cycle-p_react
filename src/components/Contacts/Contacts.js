@@ -7,7 +7,7 @@ import ContactsBanner from "../ContactsBanner/ContactsBanner";
 const Contacts = ({ anchorName, openForm }) => {
     return (
         <section className="contacts" id={anchorName}>
-            <MyMap />
+            {(+document.documentElement.clientWidth > 700) ? <MyMap /> : null}
             <ContactsBanner handleClick={openForm}/>
         </section>
     );

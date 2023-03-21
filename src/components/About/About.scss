@@ -7,7 +7,21 @@
     gap: 0 30px;
     align-items: center;
     @include text-style(30px, 110%, black);
-    margin-left: 70px;
+    margin-left: $leftMargin;
+
+    @media screen and (max-width: $width1450) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto min-content;
+        gap: 10px 0;
+        margin: 0 $margin1256;
+    }
+
+    @media screen and (max-width: $width899) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto min-content;
+        gap: 10px 0;
+        margin: 0 25px;
+    }
     /* 
     @media screen and (max-width: 1100px) {
         margin-top: 50px;
@@ -34,6 +48,22 @@
         @include text-style(20px, 160%, black);
         &:first-of-type {
             margin-bottom: 42px;
+
+            @media screen and (max-width: 1050px) {
+                margin-bottom: 12px;
+            }
+
+            @media screen and (max-width: $width500) {
+                margin-bottom: 8px;
+            }
+        }
+
+        @media screen and (max-width: 1050px) {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: $width500) {
+            @include text-style($mainFontSize500, 145%, black);
         }
     }
 }

@@ -32,6 +32,14 @@
             background-color: #fff;
             padding: 50px;
             box-shadow: 0px 0px 50px 50px rgba(0, 0, 0, 0.2);
+
+            @media screen and (max-width: 1050px) {
+                padding: 45px;
+            }
+
+            @media screen and (max-width: 500px) {
+                width: 100vw;
+            }
         }
     }
 
@@ -48,6 +56,16 @@
         position: relative;
         @include text-style(40px, 121%, black);
 
+        @media screen and (max-width: 1050px) {
+            font-size: 33px;
+            margin-bottom: 40px;
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: $titleFontSize500;
+            text-align: center;
+        }
+
         &::after {
             position: absolute;
             content: "";
@@ -55,6 +73,16 @@
             border: 1px solid black;
             left: 0;
             bottom: -30px;
+
+            @media screen and (max-width: 1050px) {
+                bottom: -20px;
+            }
+
+            @media screen and (max-width: $width500) {
+                $widthAfter: 150px;
+                width: $widthAfter;
+                left: calc(50% - $widthAfter / 2);
+            }
         }
     }
 
@@ -72,6 +100,10 @@
         background-color: transparent;
         @include text-style(18px, 122%, #0b5ea7);
         cursor: pointer;
+
+        @media screen and (max-width: 1050px) {
+            font-size: 16px;
+        }
 
         &:hover {
             box-shadow: 0px 0px 2px 2px #0b5ea733;
@@ -91,7 +123,7 @@
     }
 
     &__message {
-        visibility: visivle;
+        visibility: visible;
         opacity: 1;
         display: block;
         @include text-style(14px, 125%);
@@ -121,6 +153,11 @@
         border: none;
         background: none;
         cursor: pointer;
+
+        @media screen and (max-width: 650px) {
+            bottom: -(32px + 18px);
+            left: calc(50% - 16px);
+        }
 
         &::before,
         &::after {
@@ -156,27 +193,4 @@
             transform: scale(0.9);
         }
     }
-
-    // &__text {
-    //     padding: 0 {
-    //         bottom: 9px;
-    //     }
-    //     margin: 0 {
-    //         bottom: 30px;
-    //     }
-    //     border: none {
-    //         bottom: 1px solid rgba(0, 0, 0, 0.2);
-    //     }
-    //     width: 100%;
-    //     @include text-style(16px, 121%, black);
-    //     outline: none;
-
-    //     &:last-of-type {
-    //         margin-bottom: 48px;
-    //     }
-
-    //     &_error {
-    //         border-bottom: 1px solid #ff0000;
-    //     }
-    // }
 }

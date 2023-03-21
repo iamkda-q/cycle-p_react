@@ -4,6 +4,14 @@
     padding: 45px 0;
     background: white;
 
+    @media screen and (max-width: 1256px) {
+        padding: 25px 0;
+    }
+
+    @media screen and (max-width: $width500) {
+        padding: 10px 0;
+    }
+
     &_grey {
         background: $greyBack;
     }
@@ -25,14 +33,35 @@
     &__title {
         margin: 0 {
             bottom: 40px;
-            left: 70px;
+            left: $leftMargin;
         }
-        width: 100%;
+        max-width: 100%;
         @include text-style(54px, 130%, black);
 
-        /*         @media screen and (max-width: 512px) {
-            font-size: 25px;
-            max-width: (20000vw/320);
-        } */
+        @media screen and (max-width: 1256px) {
+            font-size: 46px;
+            margin: {
+                bottom: 20px;
+                left: $margin1256;
+            }
+        }
+
+        @media screen and (max-width: 1050px) {
+            font-size: 36px;
+        }
+
+        @media screen and (max-width: $width899) {
+            text-align: center;
+            margin: {
+                left: auto;
+                right: auto;
+            }
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: $titleFontSize500 + 2px;
+            margin-bottom: 10px;
+        }
+
     }
 }

@@ -1,12 +1,24 @@
 $cycle: rgba(53, 23, 176);
 $greyBack: #f6f6f6;
+$maxWidth: 1920px;
+$width1450: 1450px;
+$width999: 999px;
+$width899: 899px;
+$width700: 700px;
+$width500: 500px;
+$titleFontSize500: 27px;
+$mainFontSize500: 17px;
+$leftMargin: 70px;
+$margin1256: 80px;
+$margin899: 50px;
 $contactsSectionHeight: 600px;
-$start-screen-gradient: radial-gradient(
-        100% 215.42% at 0% 0%,
-        #5b483a 0%,
-        #262425 100%
-    ),
-    linear-gradient(0deg, #211f20, #211f20);
+$contactsSectionHeight980: 500px;
+// $start-screen-gradient: radial-gradient(
+//         100% 215.42% at 0% 0%,
+//         #5b483a 0%,
+//         #262425 100%
+//     ),
+//     linear-gradient(0deg, #211f20, #211f20);
 
 $arial: "Arial";
 $georgia: "Georgia";

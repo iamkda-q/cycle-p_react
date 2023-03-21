@@ -1,3 +1,5 @@
+@import "../../assets/constants.scss";
+
 .productBg {
     max-width: 100%;
     overflow: hidden;
@@ -9,6 +11,13 @@
         width: 100%;
         position: absolute;
         bottom: 0;
+
+        @media screen and (max-width: $width899) {
+            height: 80vh;
+            width: auto;
+        }
     }
+
+    
     
 }

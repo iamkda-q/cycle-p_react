@@ -7,7 +7,7 @@
     &__container {
         min-height: 100px;
         max-width: 1560px;
-        padding: 5px 100px;
+        padding: 5px 40px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -18,5 +18,9 @@
     &__info {
         @include text-style(18px, (24/15 * 100%), $cycle);
         font-style: italic;
+
+        @media screen and (max-width: 400px) {
+            font-size: 17px;
+        }
     }
 }

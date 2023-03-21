@@ -2,6 +2,7 @@
 
 .banner {
     $bannerHeight: 400px;
+    $bannerHeight980: 330px;
     width: 500px;
     height: $bannerHeight;
     background-color: #fff;
@@ -9,9 +10,27 @@
     border-radius: 5px;
     position: absolute;
     bottom: $contactsSectionHeight / 2 - ($bannerHeight / 2);
-    left: 12vw;
+    left: calc((100vw - 1560px) / 2 + $leftMargin);
+
+    @media screen and (max-width: 1560px) {
+        left: 70px;
+    }
+
+    @media screen and (max-width: 980px) {
+        width: 430px;
+        height: $bannerHeight980;
+        bottom: $contactsSectionHeight980 / 2 - ($bannerHeight980 / 2);
+    }
+
+    @media screen and (max-width: $width700) {
+        width: 100vw;
+        position: static;
+        height: auto;
+        padding-bottom: 5vw;
+    }
 
     $left: 70px;
+    $left980: 50px;
     $textSize: 16px;
 
     &__title {
@@ -22,6 +41,25 @@
         position: relative;
         @include text-style(40px, 130%, black);
 
+        @media screen and (max-width: 980px) {
+            font-size: 36px;
+            margin: {
+                top: 30px;
+                left: $left980;
+            }
+        }
+        
+
+        @media screen and (max-width: $width700) {
+            margin: 20px auto 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: $titleFontSize500;
+        }
+
         &::after {
             position: absolute;
             content: "";
@@ -29,11 +67,48 @@
             border: 1px solid black;
             left: 0;
             bottom: -30px;
+
+            @media screen and (max-width: 980px) {
+                bottom: -20px;
+            }
+
+            @media screen and (max-width: 980px) {
+                display: none;
+            }
+        }
+    }
+
+    &__container {
+        @media screen and (max-width: $width700) {
+            display: grid;
+            max-width: 80vw;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            margin: 0 auto;
+            // justify-content: center;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 0 12vw;
+        }
+
+        @media screen and (max-width: $width500) {
+            display: grid;
+            max-width: 80vw;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            margin: 0 auto;
+            // justify-content: center;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 0 12vw;
         }
     }
 
     &__part {
         $iconSize: 30px;
+        $paddingLeft700: $iconSize + 5px;
         padding-left: $left + $iconSize + 10px;
         margin-top: 28px;
         display: block;
@@ -42,8 +117,24 @@
         @include text-style($textSize, 110%, black);
         position: relative;
 
+        @media screen and (max-width: 980px) {
+            padding-left: $left980 + $iconSize + 10px;
+        }
+
+        @media screen and (max-width: $width700) {
+            padding-left: 0;
+        }
+
         &:first-of-type {
             margin-top: 70px;
+
+            @media screen and (max-width: 980px) {
+                margin-top: 50px;
+            }
+
+            @media screen and (max-width: $width700) {
+                margin-top: 0;
+            }
         }
 
         @mixin icon($imageUrl) {
@@ -55,19 +146,86 @@
                 left: $left;
                 margin-top: -8px;
                 background: $imageUrl no-repeat center/contain;
+
+                @media screen and (max-width: 980px) {
+                    left: $left980;
+                }
+                @media screen and (max-width: $width700) {
+                    left: -$paddingLeft700;
+                }
             }
         }
 
-        &_email {
-            @include icon(url(../../assets/images/mailIcon.png));
+        @mixin paddingLeft500 {
+            @media screen and (max-width: $width500) {
+                justify-self: start;
+                padding-left: $paddingLeft700 + 10px;
+            }
+
+            &::before {
+                @media screen and (max-width: $width500) {
+                    left: 0;
+                }
+            }
         }
 
         &_address {
             @include icon(url(../../assets/images/address.png));
+
+            @media screen and (max-width: $width700) {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                padding-left: $paddingLeft700 / 2;
+            }
+
+            @media screen and (max-width: $width500) {
+                grid-column-end: 2;
+            }
+
+            &::before {
+                @media screen and (max-width: $width700) {
+                    left: -$paddingLeft700 / 2;
+                }
+            }
+
+            @include paddingLeft500;
+
+        }
+
+        &_email {
+            @include icon(url(../../assets/images/mailIcon.png));
+
+            @media screen and (max-width: $width700) {
+                justify-self: end;
+                padding-left: 0;
+            }
+
+            &::before {
+                @media screen and (max-width: $width700) {
+                    left: -$paddingLeft700;
+                }
+            }
+
+            @include paddingLeft500;
+
         }
 
         &_phone {
             @include icon(url(../../assets/images/phoneIcon.png));
+
+            @media screen and (max-width: $width700) {
+                justify-self: start;
+                padding-left: $paddingLeft700;
+            }
+
+            &::before {
+                @media screen and (max-width: $width700) {
+                    left: 0;
+                }
+            }
+
+            @include paddingLeft500;
+
         }
     }
 
@@ -85,8 +243,26 @@
             top: 35px;
         }
 
+        @media screen and (max-width: 980px) {
+            margin: 0 {
+                left: $left980;
+                top: 25px;
+            }
+        }
+
+        @media screen and (max-width: $width700) {
+            margin-left: 0;
+            width: 100%;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        @media screen and (max-width: $width500) {
+            grid-column-end: 2;
+        }
+
         &:hover {
-             box-shadow: 0px 0px 2px 2px #0b5ea733;
+            box-shadow: 0px 0px 2px 2px #0b5ea733;
         }
 
         &:active {
