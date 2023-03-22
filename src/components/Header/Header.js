@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { menu } from "../../utils/constants";
 import "./Header.scss";
 import Logo from "../Logo/Logo";
@@ -52,9 +53,17 @@ function Header() {
                                       active={isActive}
                                       setActive={setActive}
                                       handleMouse={setCoordinates}
-                                      isExtreme={i === 0 ? "first" : i === (menu.length - 1) ? "last" : undefined}
+                                      isExtreme={
+                                          i === 0
+                                              ? "first"
+                                              : i === menu.length - 1
+                                              ? "last"
+                                              : undefined
+                                      }
                                       isFontLoad={isFontLoad}
                                   />
+
+                                  {}
                               </li>
                           ))
                         : null}

@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
-import emailjs from '@emailjs/browser';
+import { Routes, Route } from "react-router-dom";
+
+import emailjs from "@emailjs/browser";
 
 import Header from "../Header/Header";
 import Slider from "../Slider/Slider";
@@ -32,34 +34,61 @@ function App() {
     const sendEmail = async (e, form) => {
         e.preventDefault();
         try {
-            const res = await emailjs.sendForm('service_kolizey', 'template_6rovuqj', form, "t16K-r8rptGFEDW5p");
+            const res = await emailjs.sendForm(
+                "service_kolizey",
+                "template_6rovuqj",
+                form,
+                "t16K-r8rptGFEDW5p"
+            );
             if (res.status === 200) {
-                return true
+                return true;
             } else {
-                Promise.reject(res)
+                Promise.reject(res);
             }
-        } catch(err) {
-            console.log(err.text)
-            return false
-        }       
-      };
+        } catch (err) {
+            console.log(err.text);
+            return false;
+        }
+    };
+
+    function Landing() {
+        return (
+            <>
+                <Header />
+                <Slider anchorName="main" />
+                <Products anchorName="products" />
+                <About anchorName="about" />
+                <Partners anchorName="partners" />
+                <Contacts anchorName="contacts" openForm={openForm} />
+                <Footer />
+                <PopupWithForm
+                    isOpen={isOpen}
+                    onClose={closeForm}
+                    title="Свяжитесь с нами"
+                    buttonText="Отправить"
+                    handleSubmit={sendEmail}
+                />
+            </>
+        );
+    }
+
+    function ProductPage() {
+        return (
+            <>
+                <Header />
+                <Products anchorName="products" />
+                <Footer />
+            </>
+        );
+    }
 
     return (
         <div className="app">
-            <Header />
-            <Slider anchorName="main" />
-            <Products anchorName="products" />
-            <About anchorName="about" />
-            <Partners anchorName="partners"/>
-            <Contacts anchorName="contacts" openForm={openForm} />
-            <Footer />
-            <PopupWithForm
-                isOpen={isOpen}
-                onClose={closeForm}
-                title="Свяжитесь с нами"
-                buttonText="Отправить"
-                handleSubmit={sendEmail}
-            />
+            <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/home" element={<Landing />} />
+                <Route path="/product" element={<ProductPage />} />
+            </Routes>
         </div>
     );
 }

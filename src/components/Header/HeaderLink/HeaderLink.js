@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function HeaderLink({
     text,
@@ -14,6 +15,8 @@ function HeaderLink({
     const [anchorTarget, setAnchorTarget] = useState(null);
     const [isClick, setClick] = useState(false);
     const headerLinkRef = useRef(null);
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     /* Расчёт длины и позиции и установка указателя меню */
     function setPointer() {
@@ -108,7 +111,7 @@ function HeaderLink({
                 )
             )
         ) {
-            await Promise.all([setActive(true), setClick(true)/* , setPointer() */]);
+            // await Promise.all([setActive(true), setClick(true)/* , setPointer() */]);
             window.scrollBy({
                 top:
                     topAnchor -
