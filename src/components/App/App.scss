@@ -1,4 +1,5 @@
 @import "../../assets/fonts/fonts.scss";
+@import "../../assets/constants.scss";
 
 * {
     box-sizing: border-box;
@@ -18,6 +19,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    padding: 0 {
+        top: $appPaddingTop;
+    };
 
     &_stopped {
         overflow: hidden;

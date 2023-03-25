@@ -1,32 +1,41 @@
 import React from "react";
 import "./Product.scss";
-import ProductInfo from "./Info/ProductInfo";
-import ProductImg from "./Img/ProductImg";
+import Section from "../Section/Section";
+import Gallery from "../Gallery/Gallery";
 
-function Product({ name, shortD, img, number }) {
+function Product({ name, shortD, img, product, setProductInfo }) {
     return (
-        <div className="product">
-            <div
-                className={`product__number product__number_${
-                    (number % 2) && (+document.documentElement.clientWidth > 899) ? "right" : "left"
-                }`}
-            >
-                {number}
+        <Section title="О преобразователе">
+            <div className="product">
+                <div>
+                    <h3 className="product__description">
+                        ООО НПП «ЦИКЛ ПЛЮС» — это команда настоящих
+                        специалистов, занимающихся разработкой и производством
+                        промышленной преобразовательной техники различного
+                        назначения.
+                    </h3>
+                    <h3 className="product__description">
+                        Предприятие «ЦИКЛ ПЛЮС» начало свою деятельность с 1991
+                        года с разработки современных электроприводов для
+                        горнодобывающей техники. В настоящее время мы имеем свое
+                        проектно-конструкторское бюро и
+                        лабораторно-испытательную базу, которые размещены на
+                        собственных площадях в г. Москве. При разработке
+                        оборудования используется передовая элементная база, а
+                        также применяется современная процессорная техника, как
+                        отечественного, так и импортного производителя.
+                        Проектируем устройства на базе собственного программного
+                        обеспечения, и за годы работ был решён ряд сложных
+                        инженерных задач, поставленных перед нашим коллективом.
+                        Высококвалифицированные специалисты выполняют все вид
+                        работ – от разработки, ОКР, НИОКР до выпуска готовой
+                        продукции – с высоким уровнем качества и в поставленные
+                        сроки.
+                    </h3>
+                </div>
+                <Gallery />
             </div>
-            <div className="product__container">
-                {(number % 2) && (+document.documentElement.clientWidth > 899) ? (
-                    <>
-                        <ProductInfo titleText={name} subtitleText={shortD} />
-                        <ProductImg image={img} />
-                    </>
-                ) : (
-                    <>
-                        <ProductImg image={img} />
-                        <ProductInfo titleText={name} subtitleText={shortD} />
-                    </>
-                )}
-            </div>
-        </div>
+        </Section>
     );
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
-import "../Product.scss";
+import "../ProductMain.scss";
 
-function ProductImg({image}) {
+function ProductMainImg({image}) {
     return (
         <img
             src={image}
@@ -11,4 +11,4 @@ function ProductImg({image}) {
     );
 }
 
-export default ProductImg;
+export default ProductMainImg;

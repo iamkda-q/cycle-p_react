@@ -1,5 +1,6 @@
 $cycle: rgba(53, 23, 176);
 $greyBack: #f6f6f6;
+$appPaddingTop: 40px;
 $maxWidth: 1920px;
 $width1450: 1450px;
 $width999: 999px;
@@ -13,12 +14,6 @@ $margin1256: 80px;
 $margin899: 50px;
 $contactsSectionHeight: 600px;
 $contactsSectionHeight980: 500px;
-// $start-screen-gradient: radial-gradient(
-//         100% 215.42% at 0% 0%,
-//         #5b483a 0%,
-//         #262425 100%
-//     ),
-//     linear-gradient(0deg, #211f20, #211f20);
 
 $arial: "Arial";
 $georgia: "Georgia";
@@ -40,49 +35,28 @@ $georgia: "Georgia";
     line-height: $line-height;
 }
 
+@mixin shaiding {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .numbers {
     font-family: "Times New Roman", Times, serif;
 }
 
-/* @mixin title ($width, $color, $align) {
-    width: $width;
-    @include text-style($georgia, 35px, 130%, $color);
-    letter-spacing: 0.06em;
-    text-align: $align;
+.iconsGreed {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 20px 100px;
+    padding: 0 30px;
 }
-
-
-@mixin bg-color($color) {
-    width: 100vw;
-    margin-left: calc(calc(100vw - 100%) / -2);
-    background: $color;
-}
-
-@mixin button-hover {
-    transition: background-color 0.2s linear;
-    cursor: pointer;
-    &:hover {
-        background-color: $color-primary-light;
-    }
-    &:active {
-        transform: scale(0.95);
-    }
-
-}
-
-@mixin backPopups {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(41, 41, 41, 0.6);
-    opacity: 1;
-    transition: 0.4s linear;
-    z-index: 1;
-
-    &_hidden {
-        visibility: hidden;
-        opacity: 0;
-    }
-} */

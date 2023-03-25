@@ -2,75 +2,113 @@
 
 .header {
     max-width: 100vw;
+    margin-top: -120px;
+    padding-top: 80px;
     position: relative;
-    top: 40px;
-    padding: 15px 0;
-    background: white;
-    $this: &;
-    z-index: 1;
-    min-height: 75px;
+    border-radius: 0 0 100px 0;
+    overflow: hidden;
 
-    &_sticky {
-        position: sticky;
-        top: 0px;
+    @media screen and (max-width: $width999) {
+        padding-top: 100px;
     }
 
-        @media screen and (max-width: $width999) {
-        display: none;
+    @media screen and (max-width: $width899) {
+        border-radius: 0 0 60px 0;
     }
 
-    &__container {
-        max-width: $maxWidth;
-        margin: 0 auto;
+    &:before {
+        @include shaiding;
+        border-radius: 0 0 100px 0;
+
+        @media screen and (max-width: $width899) {
+            border-radius: 0 0 60px 0;
+        }
+    }
+    &__info {
+        overflow: hidden;
+        max-width: 1560px;
         padding: 0 $leftMargin;
-    }
-
-    &__grid {
-        list-style: none;
-        align-items: center;
-        justify-items: start;
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-columns: 1fr repeat(5, minmax(min-content, max-content));
-        column-gap: 35px;
+        margin: 100px auto;
         position: relative;
-    }
 
-    &__link {
-        text-decoration: none;
-        padding-bottom: 4px;
-        @include text-style(20px, (24/15 * 100%), $cycle);
-        transition: 0.2s linear;
-        &:hover {
-            color: blue;
-        }
-
-        &_checked {
-            color: blue;
-        }
-    }
-
-    &_light {
-        background: white;
-
-        #{$this}__link {
-            @include text-style(20px, (24/15 * 100%));
-            &:hover {
-                color: $cycle;
+        @media screen and (max-width: $width899) {
+            margin: {
+                top: 0;
+                bottom: 30px;
             }
+            padding-left: $margin899;
+            text-align: center;
+        }
 
-            &_checked {
-                @include text-style(20px, (24/15 * 100%), $cycle);
-            }
+        &_products {
+            text-align: center;
+            margin: {
+                top: 50px;
+                bottom: 50px;
+            };
         }
     }
 
-    &__under {
-        position: absolute;
-        border-bottom: 4px solid transparent;
-        transition: all 0.35s ease-in-out;
-        pointer-events: none;
-        border-color: aqua;
+    &__title {
+        margin: 0 {
+            bottom: 30px;
+        }
+        width: 100%;
+        @include text-style(70px, 130%, antiquewhite);
+
+        @media screen and (max-width: 1460px) {
+            font-size: 55px;
+        }
+
+        @media screen and (max-width: $width899) {
+            font-size: 37px;
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: 33px;
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width: 400px) {
+            font-size: 27px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__subtitle {
+        width: 40%;
+        margin: 0 {
+            left: 10px;
+        }
+        @include text-style(25px, 160%, antiquewhite);
+
+        @media screen and (max-width: 1460px) {
+            width: 60%;
+        }
+
+        @media screen and (max-width: $width899) {
+            font-size: 18px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: $mainFontSize500;
+            width: 90%;
+            text-align: center;
+            margin: {
+                left: auto;
+                right: auto;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        &_products {
+            width: 100%;
+        }
     }
 }

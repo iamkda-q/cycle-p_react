@@ -1,10 +1,9 @@
 import "./Slider.scss";
-import { backgrounds, timerBg } from "../../utils/constants.js";
 import { useEffect, useState } from "react";
 
-function Slider({ anchorName }) {
-    const [bg1, setBg1] = useState(backgrounds[0]);
-    const [bg2, setBg2] = useState(backgrounds[-1]);
+function Slider({ slidesArr, changeTime, children}) {
+    const [bg1, setBg1] = useState(slidesArr[0]);
+    const [bg2, setBg2] = useState(slidesArr[-1]);
     const [bgOpacity, setOpacity] = useState(1);
 
     useEffect(() => {
@@ -12,21 +11,22 @@ function Slider({ anchorName }) {
             setOpacity((prev) => (prev === 1 ? 0 : 1));
         }
         function changeBg(opacity) {
+            const lastSlide = slidesArr.length - 1;
             if (!opacity) {
                 setBg1((prevBg) =>
-                    backgrounds.indexOf(prevBg) + 2 > backgrounds.length - 1
-                        ? backgrounds.indexOf(prevBg) === backgrounds.length - 1
-                            ? backgrounds[1]
-                            : backgrounds[0]
-                        : backgrounds[backgrounds.indexOf(prevBg) + 2]
+                    slidesArr.indexOf(prevBg) + 2 > lastSlide
+                        ? slidesArr.indexOf(prevBg) === lastSlide
+                            ? slidesArr[1]
+                            : slidesArr[0]
+                        : slidesArr[slidesArr.indexOf(prevBg) + 2]
                 );
             } else {
                 setBg2((prevBg) =>
-                    backgrounds.indexOf(prevBg) + 2 > backgrounds.length - 1
-                        ? backgrounds.indexOf(prevBg) === backgrounds.length - 1
-                            ? backgrounds[1]
-                            : backgrounds[0]
-                        : backgrounds[backgrounds.indexOf(prevBg) + 2]
+                    slidesArr.indexOf(prevBg) + 2 > lastSlide
+                        ? slidesArr.indexOf(prevBg) === lastSlide
+                            ? slidesArr[1]
+                            : slidesArr[0]
+                        : slidesArr[slidesArr.indexOf(prevBg) + 2]
                 );
             }
         }
@@ -35,42 +35,28 @@ function Slider({ anchorName }) {
             changeOpacity();
         }
 
-        const timerId = setInterval(() => change(bgOpacity), timerBg);
+        const timerId = setInterval(() => change(bgOpacity), changeTime);
         return () => clearInterval(timerId);
     }, [bgOpacity, bg1, bg2]);
 
     return (
-        <section className="slider" id={anchorName}>
+        <>
             <div
-                className="slider__slide"
+                className="slide"
                 style={{
                     opacity: `${bgOpacity}`,
                     backgroundImage: `url(${bg1}`,
                 }}
             ></div>
             <div
-                className="slider__slide"
+                className="slide"
                 style={{
                     opacity: `${+!bgOpacity}`,
                     backgroundImage: `url(${bg2}`,
                 }}
             ></div>
-            <div className="slider__container">
-                <div className="slider__info">
-                    <h1 className="slider__title">
-                        {document.documentElement.clientWidth > 500
-                            ? `Научно-производственное предприятие "Цикл\xa0Плюс"`
-                            : `НПП\xa0"Цикл\xa0Плюс"`}
-                        {/* \xa0 - неразрывный пробел */}
-                    </h1>
-                    <h3 className="slider__subtitle">
-                        Наше предприятие занимается разработкой и производством
-                        преобразовательной техники.
-                    </h3>
-                    {/* <a className="slider__button" href="#projects" >К продукции</a> */}
-                </div>
-            </div>
-        </section>
+            {children}
+        </>
     );
 }
 

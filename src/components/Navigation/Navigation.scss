@@ -1,0 +1,74 @@
+@import "../../assets/constants.scss";
+
+.navigation {
+    max-width: 100vw;
+    padding: 15px 0;
+    background: white;
+    $this: &;
+    z-index: 1;
+    min-height: 75px;
+
+    &_sticky {
+        position: sticky;
+        top: 0px;
+    }
+
+        @media screen and (max-width: $width999) {
+        display: none;
+    }
+
+    &__container {
+        max-width: $maxWidth;
+        margin: 0 auto;
+        padding: 0 $leftMargin;
+    }
+
+    &__grid {
+        list-style: none;
+        align-items: center;
+        justify-items: start;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr repeat(5, minmax(min-content, max-content));
+        column-gap: 35px;
+        position: relative;
+    }
+
+    &__link {
+        text-decoration: none;
+        padding-bottom: 4px;
+        @include text-style(20px, (24/15 * 100%), $cycle);
+        transition: 0.2s linear;
+        &:hover {
+            color: blue;
+        }
+
+        &_checked {
+            color: blue;
+        }
+    }
+
+    &_light {
+        background: white;
+
+        #{$this}__link {
+            @include text-style(20px, (24/15 * 100%));
+            &:hover {
+                color: $cycle;
+            }
+
+            &_checked {
+                @include text-style(20px, (24/15 * 100%), $cycle);
+            }
+        }
+    }
+
+    &__under {
+        position: absolute;
+        border-bottom: 4px solid transparent;
+        transition: all 0.35s ease-in-out;
+        pointer-events: none;
+        border-color: aqua;
+    }
+}

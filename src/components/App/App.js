@@ -2,21 +2,26 @@ import React, { useState, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import emailjs from "@emailjs/browser";
+import { mainSlides, timerBg, company, productsBase } from "../../utils/constants";
 
 import Header from "../Header/Header";
-import Slider from "../Slider/Slider";
+import Navigation from "../Navigation/Navigation.js";
 import Products from "../Products/Products";
+import Product from "../Product/Product";
 import About from "../About/About";
 import Partners from "../Partners/Partners";
 import Contacts from "../Contacts/Contacts";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import Gallery from "../Gallery/Gallery";
 
 import "./App.scss";
+import Documentation from "../Documentation/Documentation";
 
 function App() {
     const page = document.querySelector(".page"); // для запрета скролла при открытом попапе
     const [isOpen, setOpen] = useState(false);
+    const [product, setProductInfo] = useState({});
 
     function openForm(e) {
         e.preventDefault();
@@ -54,13 +59,17 @@ function App() {
     function Landing() {
         return (
             <>
-                <Header />
-                <Slider anchorName="main" />
-                <Products anchorName="products" />
+                <Navigation />
+                <Header
+                    anchorName="header"
+                    title={company.name}
+                    subtitle={company.mission}
+                />
+                <Products anchorName="products" setProductInfo={setProductInfo}/>
                 <About anchorName="about" />
                 <Partners anchorName="partners" />
                 <Contacts anchorName="contacts" openForm={openForm} />
-                <Footer />
+                <Footer isGrey={true}/>
                 <PopupWithForm
                     isOpen={isOpen}
                     onClose={closeForm}
@@ -75,8 +84,15 @@ function App() {
     function ProductPage() {
         return (
             <>
-                <Header />
-                <Products anchorName="products" />
+                <Navigation />
+                <Header
+                    anchorName="header"
+                    title={product.name}
+                    subtitle={product.shortD}
+                    page="products"
+                />
+                <Product /* name={product.name} shortD={product.shortD} img={product.img}  *//>
+                <Documentation />
                 <Footer />
             </>
         );
@@ -86,8 +102,7 @@ function App() {
         <div className="app">
             <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/home" element={<Landing />} />
-                <Route path="/product" element={<ProductPage />} />
+                <Route path="/products" element={<ProductPage />} />
             </Routes>
         </div>
     );

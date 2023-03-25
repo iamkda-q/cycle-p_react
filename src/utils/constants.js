@@ -10,13 +10,14 @@ import bg5 from "../assets/images/bg5.jpg";
 
 import belaz from "../assets/images/belaz.png";
 
-const backgrounds = [bg1, bg2, bg3, bg4, bg5];
+const mainSlides = [bg1, bg2, bg3, bg4, bg5];
+const mainBgs = [bg1, bg2, bg3, bg4, bg5];
 
 /* Набор фотографий продукции */
 
 /* Набор фотографий секции о нас */
 
-const aboutFigures = backgrounds.map((figure) => {
+const aboutFigures = mainSlides.map((figure) => {
     return { id: uniqid(), src: figure };
 });
 
@@ -37,7 +38,7 @@ const colors = [
 /* Меню навигации (скелет страницы) */
 
 const menu = [
-    { text: "Главная", anchorName: "main" },
+    { text: "Главная", anchorName: "header" },
     { text: "Продукция", anchorName: "products" },
     { text: "О нас", anchorName: "about" },
     { text: "Партнеры", anchorName: "partners" },
@@ -46,24 +47,36 @@ const menu = [
     return { id: uniqid(), ...product };
 });
 
+/* Информация о предприятии */
+
+const company = {
+    name:
+        document.documentElement.clientWidth > 500
+            ? `Научно-производственное предприятие "Цикл\xa0Плюс"`
+            : `НПП\xa0"Цикл\xa0Плюс"`,
+    mission:
+        "Наше предприятие занимается разработкой и производством преобразовательной техники.",
+};
+
 /* Информация о продукции */
 
 const productsBase = [
     {
-        name: "Voluptates eos, possimus at repellendus?",
+        name: (
+            <>
+                Автоматический регулятор дозировочного насоса (АРДН-<span className="numbers">3)</span>
+            </>
+        ),
 
-        shortD: `Lorem ipsum dolor sit amet consectetur 
-        adipisicing elit. Veniam, beatae? Eos laborum hic animi libero quod,
-        cupiditate sapiente modi, provident placeat enim assumenda 
-        cumque cum mollitia excepturi illo consequatur labor`,
+        shortD: <>
+        Серия преобразователей частоты для работы с плунжерным насосом мощностью <span className="numbers">0,25-3</span>кВт</>,
 
-        fullD: `Lorem ipsum dolor sit amet consectetur 
-        adipisicing elit. Veniam, beatae? Eos laborum hic animi libero quod,
-        cupiditate sapiente modi, provident placeat enim assumenda 
-        cumque cum mollitia excepturi illo consequatur labor Lorem ipsum dolor sit amet consectetur 
-        adipisicing elit. Veniam, beatae? Eos laborum hic animi libero quod,
-        cupiditate sapiente modi, provident placeat enim assumenda 
-        cumque cum mollitia excepturi illo consequatur labor`,
+        fullD: `Серия преобразователей частоты (автоматический регулятор дозировочного насоса) 
+        для работы с плунжерным насосом мощностью 0,25-3кВтСерия преобразователей частоты 
+        (автоматический регулятор дозировочного насоса) для работы с плунжерным насосом мощностью
+         0,25-3кВтСерия преобразователей частоты (автоматический регулятор дозировочного насоса)
+          для работы с плунжерным насосом мощностью 0,25-3кВтСерия преобразователей частоты
+           (автоматический регулятор дозировочного насоса) для работы с плунжерным насосом мощностью 0,25-3кВт`,
 
         img: belaz,
     },
@@ -107,4 +120,13 @@ const productsBase = [
     return { id: uniqid(), ...product };
 });
 
-export { colors, backgrounds, timerBg, productsBase, menu, aboutFigures };
+export {
+    colors,
+    mainSlides,
+    timerBg,
+    productsBase,
+    menu,
+    aboutFigures,
+    mainBgs,
+    company,
+};

@@ -1,20 +1,20 @@
 import React from "react";
 import "./Products.scss";
 import ProductBg from "../ProductBg/ProductBg";
-import Product from "../Product/Product";
+import ProductMain from "../ProductMain/ProductMain";
 
-import { productsBase, backgrounds } from "../../utils/constants.js";
-import belaz from "../../assets/images/belaz.png";
+import { productsBase, mainBgs } from "../../utils/constants.js";
 
-function Products({ anchorName }) {
+function Products({ anchorName, setProductInfo}) {
+
     return (
         <section className="products" id={`${anchorName}`}>
             <ul>
                 {productsBase
                     ? productsBase.map((product, i) => (
                           <li key={product.id}>
-                              <Product {...product} number={i + 1} />
-                              <ProductBg bgImage={backgrounds[i]} />
+                              <ProductMain {...{...product}} number={i + 1} product={product} setProductInfo={setProductInfo}/>
+                              <ProductBg bgImage={mainBgs[i]} />
                           </li>
                       ))
                     : null}
