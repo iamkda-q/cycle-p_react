@@ -1,5 +1,6 @@
 import React from "react";
-import "../Gallery.scss";
+import Image from "next/image";
+import { gallery__label, gallery__figure } from "../Gallery.module.scss";
 
 const GalleryPhoto = ({ id, onChange, value, name, figure }) => {
     return (
@@ -11,8 +12,8 @@ const GalleryPhoto = ({ id, onChange, value, name, figure }) => {
                 checked={value === id}
                 name={name}
             />
-            <label htmlFor={id} className="gallery__label">
-                <img src={figure} alt="" className="gallery__figure"/>
+            <label htmlFor={id} className={gallery__label}>
+                <Image src={figure} alt="" className={gallery__figure} />
             </label>
         </>
     );

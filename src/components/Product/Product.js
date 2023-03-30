@@ -1,20 +1,21 @@
 import React from "react";
-import "./Product.scss";
+import productStyles, { product__description} from "./Product.module.scss";
 import Section from "../Section/Section";
 import Gallery from "../Gallery/Gallery";
+import Image from "next/image";
 
 function Product({ name, shortD, img, product, setProductInfo }) {
     return (
-        <Section title="О преобразователе">
-            <div className="product">
+        <Section title="О преобразователе" isHiddenOvf={true}>
+            <div className={productStyles.product}>
                 <div>
-                    <h3 className="product__description">
+                    <h3 className={product__description}>
                         ООО НПП «ЦИКЛ ПЛЮС» — это команда настоящих
                         специалистов, занимающихся разработкой и производством
                         промышленной преобразовательной техники различного
                         назначения.
                     </h3>
-                    <h3 className="product__description">
+                    <h3 className={product__description}>
                         Предприятие «ЦИКЛ ПЛЮС» начало свою деятельность с 1991
                         года с разработки современных электроприводов для
                         горнодобывающей техники. В настоящее время мы имеем свое
@@ -35,6 +36,7 @@ function Product({ name, shortD, img, product, setProductInfo }) {
                 </div>
                 <Gallery />
             </div>
+            <Image src={img}/>
         </Section>
     );
 }

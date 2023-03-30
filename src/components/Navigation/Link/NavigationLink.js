@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { navigation__link } from "../Navigation.module.scss";
 
 function NavigationLink({ text, title, anchorName, setAnchor, link }) {
     const navigationLinkRef = useRef(null);
-    const navigate = useNavigate();
 
     /* Получение координат якоря */
     function getCoordinates() {
@@ -27,7 +26,6 @@ function NavigationLink({ text, title, anchorName, setAnchor, link }) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        // navigate(link);
         const topAnchor = getCoordinates();
         setAnchor(topAnchor);
     };
@@ -37,7 +35,7 @@ function NavigationLink({ text, title, anchorName, setAnchor, link }) {
             ref={navigationLinkRef}
             href={`#${anchorName}`}
             title={title}
-            className={`navigation__link`}
+            className={navigation__link}
             onClick={handleClick}
         >
             {text}

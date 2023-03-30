@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { menu } from "../../utils/constants";
-import "./Navigation.scss";
+import {
+    navigation,
+    navigation_sticky,
+    navigation__container,
+    navigation__grid,
+} from "./Navigation.module.scss";
 import Logo from "../Logo/Logo";
 import NavigationLink from "./Link/NavigationLink";
 
 function Navigation() {
     const navRef = useRef();
-    const { pathname } = useLocation();
     const [currentAnchor, setAnchor] = useState(null);
     // const [isFontLoad, setFontLoad] = useState(false);
 
@@ -21,16 +24,20 @@ function Navigation() {
         const navHeight = navRef.current.getBoundingClientRect().height;
         window.scrollBy({
             top:
-                (currentAnchor ? currentAnchor : navHeight)  -
+                (currentAnchor ? currentAnchor : navHeight) -
                 navRef.current.getBoundingClientRect().height,
             behavior: "smooth",
         });
-    }, [pathname, currentAnchor]);
+    }, [currentAnchor]);
 
     return (
-        <div className="navigation navigation_sticky" id="navigation" ref={navRef} >
-            <nav className="navigation__container">
-                <ul className="navigation__grid">
+        <div
+            className={`${navigation} ${navigation_sticky}`}
+            id="navigation"
+            ref={navRef}
+        >
+            <nav className={navigation__container}>
+                <ul className={navigation__grid}>
                     <li>
                         <Logo />
                     </li>

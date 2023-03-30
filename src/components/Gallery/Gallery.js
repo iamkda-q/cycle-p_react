@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./Gallery.scss";
+import {gallery, gallery__wrapper} from "./Gallery.module.scss";
 
 import { aboutFigures } from "../../utils/constants.js";
 import GalleryPhoto from "./Photo/GalleryPhoto";
@@ -16,7 +16,7 @@ function Gallery() {
     function changeValue(e) {
         const id = e ? e.target.id : galleryRef.current.firstElementChild.id;
         setValue(id);
-        const labels = document.querySelectorAll(".gallery__label");
+        const labels = galleryRef.current.querySelectorAll("label");
         let counter = 0;
         for (const label of labels) {
             if (label.htmlFor !== id) {
@@ -37,8 +37,8 @@ function Gallery() {
     }
 
     return (
-        <div className="gallery">
-            <div className="gallery__wrapper" ref={galleryRef}>
+        <div className={gallery}>
+            <div className={gallery__wrapper} ref={galleryRef}>
                 {aboutFigures
                     ? aboutFigures.map((figure, i) => (
                           <GalleryPhoto

@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../ProductMain.scss";
+import Link from "next/link";
+import {
+    productMain__info,
+    productMain__title,
+    productMain__subtitle,
+} from "../ProductMain.module.scss";
 
-function ProductMainInfo({ titleText, subtitleText, handleClick }) {
+function ProductMainInfo({ titleText, subtitleText, link }) {
     return (
-        <div className="productMain__info">
-            <h1 className="productMain__title">
-                <Link to="/products" onClick={handleClick}>{titleText}</Link>
-            </h1>
-            <h3 className="productMain__subtitle">{subtitleText}</h3>
+        <div className={productMain__info}>
+            <h2 className={productMain__title}>
+                <Link href={`/products/${link}`}>{titleText}</Link>
+            </h2>
+            <h3 className={productMain__subtitle}>{subtitleText}</h3>
         </div>
     );
 }

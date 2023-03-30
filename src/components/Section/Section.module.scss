@@ -16,6 +16,10 @@
         background: $greyBack;
     }
 
+    &_hiddenOverflow {
+        overflow: hidden;
+    }
+
     &__container {
         max-width: 1560px;
         margin: 0 auto;

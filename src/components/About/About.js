@@ -1,25 +1,26 @@
 import React from "react";
-import "./About.scss";
+import { about, about__subtitle, numbers } from "./About.module.scss";
 import Section from "../Section/Section";
 import Gallery from "../Gallery/Gallery";
 
 function About({ anchorName }) {
     return (
-        <Section anchorName={anchorName} title="О нас">
+        <Section anchorName={anchorName} title="О нас" isHiddenOvf={true}>
             {
-                <div className="about">
+                <div className={about}>
                     <div>
-                        <h3 className="about__subtitle">
+                        <h3 className={about__subtitle}>
                             ООО НПП «ЦИКЛ ПЛЮС» — это команда настоящих
                             специалистов, занимающихся разработкой и
                             производством промышленной преобразовательной
                             техники различного назначения.
                         </h3>
-                        <h3 className="about__subtitle">
-                            Предприятие «ЦИКЛ ПЛЮС» начало свою деятельность с
-                            1991 года с разработки современных электроприводов
-                            для горнодобывающей техники. В настоящее время мы
-                            имеем свое проектно-конструкторское бюро и
+                        <h3 className={about__subtitle}>
+                            Предприятие «ЦИКЛ ПЛЮС» начало свою деятельность с 
+                            <span className={numbers}> 1991</span> года с
+                            разработки современных электроприводов для
+                            горнодобывающей техники. В настоящее время мы имеем
+                            свое проектно-конструкторское бюро и
                             лабораторно-испытательную базу, которые размещены на
                             собственных площадях в г. Москве. При разработке
                             оборудования используется передовая элементная база,

@@ -1,50 +1,60 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./ProductBg.scss";
+import Image from "next/image";
+import { productBg, productBg__background } from "./ProductBg.module.scss";
 
-function ProductBg({bgImage}) {
+function ProductBg({ bgImage }) {
     const productViewRef = useRef();
-    const productViewHeight = +document.documentElement.clientWidth > 899 ? "200px" : "120px";
+    const [productViewHeight, setProductViewHeight] = useState("200px");
     const productBgRef = useRef();
-    
-    const [imgTopOffset, setImgTopOffset] = useState(0);
 
     useEffect(() => {
-        function bgScroll() {
-            const productViewPosition =
-                productViewRef.current.getBoundingClientRect().top;
-            const productBgRefHeight =
-                productBgRef.current.getBoundingClientRect().height;
-            const clientHeight = document.documentElement.clientHeight;
-            if (productViewPosition < clientHeight) {
-                const relativeMove =
-                    (clientHeight - productViewPosition) /
-                    (clientHeight + parseInt(productViewHeight));
-                setImgTopOffset(
-                    relativeMove *
-                        (parseInt(productViewHeight) - productBgRefHeight)
-                );
-            }
+        if (+document.documentElement.clientWidth > 899) {
+            setProductViewHeight("200px");
+        } else {
+            setProductViewHeight("120px");
         }
+    }, []);
 
-        window.addEventListener("scroll", bgScroll);
+    const [imgTopOffset, setImgTopOffset] = useState(0);
 
+    function bgScroll() {
+        const productViewPosition =
+            productViewRef.current.getBoundingClientRect().top;
+        const productBgRefHeight =
+            productBgRef.current.getBoundingClientRect().height;
+        const clientHeight = document.documentElement.clientHeight;
+        if (productViewPosition < clientHeight) {
+            const relativeMove =
+                (clientHeight - productViewPosition) /
+                (clientHeight + parseInt(productViewHeight));
+            setImgTopOffset(
+                relativeMove *
+                    (parseInt(productViewHeight) - productBgRefHeight)
+            );
+        }
+    }
+    useEffect(() => {
+        // window.addEventListener("scroll", bgScroll);
+        console.log("монтирование");
         return () => {
-            window.removeEventListener("scroll", bgScroll);
+            // window.removeEventListener("scroll", bgScroll);
         };
     }, []);
 
     return (
         <div
-            className="productBg"
+            className={productBg}
             ref={productViewRef}
             style={{ height: productViewHeight }}
         >
-            <img
-                src={bgImage}
-                className="productBg__background"
+            {" "}
+            <Image
                 ref={productBgRef}
+                alt="Фоновое фото меню"
+                src={bgImage}
+                quality={100}
+                className={productBg__background}
                 style={{ bottom: imgTopOffset }}
-                alt="Фоновое фото 1"
             />
         </div>
     );

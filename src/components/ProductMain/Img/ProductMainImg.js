@@ -1,12 +1,14 @@
 import React from "react";
-import "../ProductMain.scss";
+import Image from "next/image";
+import { productMain__figure } from "../ProductMain.module.scss";
 
-function ProductMainImg({image}) {
+function ProductMainImg({ image }) {
     return (
-        <img
+        <Image
             src={image}
-            alt="Автоматический регулятор дозатора насоса"
-            className="product__figure"
+            quality={100}
+            alt="Фото продукта"
+            className={productMain__figure}
         />
     );
 }

@@ -1,7 +1,8 @@
-import "./Slider.scss";
 import { useEffect, useState } from "react";
+import { slide } from "./Slider.module.scss";
+import Image from "next/image";
 
-function Slider({ slidesArr, changeTime, children}) {
+function Slider({ slidesArr, changeTime, children }) {
     const [bg1, setBg1] = useState(slidesArr[0]);
     const [bg2, setBg2] = useState(slidesArr[-1]);
     const [bgOpacity, setOpacity] = useState(1);
@@ -42,19 +43,35 @@ function Slider({ slidesArr, changeTime, children}) {
     return (
         <>
             <div
-                className="slide"
+                className={slide}
                 style={{
                     opacity: `${bgOpacity}`,
-                    backgroundImage: `url(${bg1}`,
                 }}
-            ></div>
+            >
+                <Image
+                    alt="Background 1"
+                    src={bg1}
+                    fill
+                    style={{
+                        objectFit: "cover",
+                    }}
+                />
+            </div>
             <div
-                className="slide"
+                className={slide}
                 style={{
                     opacity: `${+!bgOpacity}`,
-                    backgroundImage: `url(${bg2}`,
                 }}
-            ></div>
+            >
+                <Image
+                    alt="Background 2"
+                    src={bg2}
+                    fill
+                    style={{
+                        objectFit: "cover",
+                    }}
+                />
+            </div>
             {children}
         </>
     );

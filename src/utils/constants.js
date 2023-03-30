@@ -1,3 +1,4 @@
+import { numbers } from "./constants.module.scss";
 import uniqid from "uniqid";
 
 /* Набор фотографий для слайдшоу начальной страницы */
@@ -50,26 +51,31 @@ const menu = [
 /* Информация о предприятии */
 
 const company = {
-    name:
-        document.documentElement.clientWidth > 500
-            ? `Научно-производственное предприятие "Цикл\xa0Плюс"`
-            : `НПП\xa0"Цикл\xa0Плюс"`,
+    name: `Научно-производственное предприятие "Цикл\xa0Плюс"`,
+    shortName: `НПП\xa0"Цикл\xa0Плюс"`,
     mission:
         "Наше предприятие занимается разработкой и производством преобразовательной техники.",
 };
 
 /* Информация о продукции */
 
-const productsBase = [
-    {
-        name: (
+const productsBase = {
+    ardn3: {
+        name: "Автоматический регулятор дозировочного насоса (АРДН-3)",
+        shortD: "Серия преобразователей частоты для работы с плунжерным насосом мощностью 0,25-3кВт",
+        /*         name: (
             <>
-                Автоматический регулятор дозировочного насоса (АРДН-<span className="numbers">3)</span>
+                Автоматический регулятор дозировочного насоса (АРДН-
+                <span className={numbers}>3)</span>
             </>
         ),
 
-        shortD: <>
-        Серия преобразователей частоты для работы с плунжерным насосом мощностью <span className="numbers">0,25-3</span>кВт</>,
+        shortD: (
+            <>
+                Серия преобразователей частоты для работы с плунжерным насосом
+                мощностью <span className="numbers">0,25-3</span>кВт
+            </>
+        ), */
 
         fullD: `Серия преобразователей частоты (автоматический регулятор дозировочного насоса) 
         для работы с плунжерным насосом мощностью 0,25-3кВтСерия преобразователей частоты 
@@ -80,7 +86,7 @@ const productsBase = [
 
         img: belaz,
     },
-    {
+    provident5: {
         name: "Provident placeat enim assumenda cum",
 
         shortD: `Lorem ipsum dolor sit amet consectetur 
@@ -96,9 +102,9 @@ const productsBase = [
         cupiditate sapiente modi, provident placeat enim assumenda 
         cumque cum mollitia excepturi illo consequatur labor`,
 
-        img: belaz,
+        img: bg1,
     },
-    {
+    voluptates: {
         name: "Voluptates eos, possimus at repellendus?",
 
         shortD: `Lorem ipsum dolor sit amet consectetur 
@@ -114,11 +120,26 @@ const productsBase = [
         cupiditate sapiente modi, provident placeat enim assumenda 
         cumque cum mollitia excepturi illo consequatur labor`,
 
-        img: belaz,
+        img: bg2,
     },
-].map((product) => {
-    return { id: uniqid(), ...product };
-});
+};
+
+function getAllPostIds() {
+    return Object.keys(productsBase).map((key) => {
+        return {
+            params: {
+                id: key,
+            },
+        };
+    });
+}
+
+function getPostData(id) {
+    return {
+        id,
+        ...productsBase[id],
+    };
+}
 
 export {
     colors,
@@ -129,4 +150,6 @@ export {
     aboutFigures,
     mainBgs,
     company,
+    getAllPostIds,
+    getPostData,
 };

@@ -2,7 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import { useFormWithValidation } from "../../utils/useForms";
 import Input from "../Input/Input";
 
-import "./PopupWithForm.scss";
+import {
+    popup,
+    popup_opened,
+    popup__container,
+    popup__container_type_form,
+    popup__form,
+    popup__title,
+    popup__info,
+    popup__send,
+    popup__sendButton,
+    popup__sendButton_disable,
+    popup__closeButton,
+    popup__message,
+    popup__message_error,
+    popup__message_success,
+    popup__message_hidden
+} from "./PopupWithForm.module.scss";
 
 function PopupWithForm({ isOpen, title, buttonText, onClose, handleSubmit }) {
     const { values, handleChange, errors, isValid, resetForm } =
@@ -36,17 +52,19 @@ function PopupWithForm({ isOpen, title, buttonText, onClose, handleSubmit }) {
     }
 
     return (
-        <div className={`popup ${isOpen ? "popup_opened" : ""}`}>
-            <div className="popup__container popup__container_type_form">
+        <div className={`${popup}${isOpen ? ` ${popup_opened}` : ""}`}>
+            <div
+                className={`${popup__container} ${popup__container_type_form}`}
+            >
                 <form
-                    className="popup__form"
+                    className={popup__form}
                     ref={form}
                     name={`popup-form`}
                     noValidate
                     onSubmit={handleSendSubmit}
                 >
-                    <h2 className="popup__title">{title}</h2>
-                    <fieldset className="popup__info">
+                    <h2 className={popup__title}>{title}</h2>
+                    <fieldset className={popup__info}>
                         <Input
                             name="userName"
                             type="text"
@@ -84,24 +102,27 @@ function PopupWithForm({ isOpen, title, buttonText, onClose, handleSubmit }) {
                                 required: true,
                             }}
                         />
-                        <div className="popup__send">
+                        <div className={popup__send}>
                             <button
                                 type="submit"
-                                className={`popup__send-button ${
+                                className={`${popup__sendButton} ${
                                     isValid && !isSending
                                         ? ""
-                                        : "popup__send-button_disable"
+                                        : popup__sendButton_disable
+                                }
+                                    
+                                        
                                 }`}
                             >
                                 {isSending ? "Отправляем..." : buttonText}
                             </button>
                             <span
-                                className={`popup__message ${
+                                className={`${popup__message} ${
                                     sendError.isError
-                                        ? "popup__message_error"
+                                        ? popup__message_error
                                         : sendSuccess
-                                        ? "popup__message_success"
-                                        : "popup__message_hidden"
+                                        ? popup__message_success
+                                        : popup__message_hidden
                                 }`}
                             >
                                 {sendError.isError
@@ -115,7 +136,7 @@ function PopupWithForm({ isOpen, title, buttonText, onClose, handleSubmit }) {
                 </form>
                 <button
                     type="button"
-                    className="popup__close-button"
+                    className={popup__closeButton}
                     aria-label
                     onClick={onClose}
                 ></button>

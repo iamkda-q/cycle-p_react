@@ -18,10 +18,11 @@
 
         @media screen and (max-width: $width500) {
             height: 13vw;
+            max-width: 300px;
         }
     }
 
-    &__icon-text {
+    &__text {
         margin: 0;
         @include text-style(16px, 121%, black);
         text-align: center;

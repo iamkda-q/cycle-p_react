@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Logo.scss";
+import Image from "next/image";
+import Link from "next/link";
+
+import {logo, logo__img} from "./Logo.module.scss";
+
 import train from "../../assets/images/train4.jpg"
 
 function Logo() {
     return (
-        <Link to="/" className="logo">
-            <img className="logo__img" src={train} alt="mini train"/>
+        <Link href="/" className={logo}>
+            <Image className={logo__img} src={train} alt="mini train"/>
             Цикл Плюс
         </Link>
     );

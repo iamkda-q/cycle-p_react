@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useYMaps } from "@pbe/react-yandex-maps";
 // import * as ymaps3 from 'ymaps3';
 
-import "./MyMap.scss";
+import { map } from "./MyMap.module.scss";
 
 const MyMap = () => {
     const [myMap, setMyMap] = useState(null);
@@ -45,13 +45,16 @@ const MyMap = () => {
             return;
         }
 
-/*         let coord
+        /*         let coord
 
         if (+document.documentElement.clientWidth <= 1256) {
             cycleCoord
         } */
         const myMap = new ymaps.Map(mapRef.current, {
-            center: +document.documentElement.clientWidth <= 1256 ? [55.745963, 37.821500] : cycleCoord,
+            center:
+                +document.documentElement.clientWidth <= 1256
+                    ? [55.745963, 37.8215]
+                    : cycleCoord,
             zoom: 16,
             controls: [
                 "zoomControl",
@@ -96,7 +99,7 @@ const MyMap = () => {
 
     return (
         <div
-            className="map"
+            className={map}
             ref={mapRef}
             onClick={enableBehaviors}
             onMouseLeave={disableBehaviors}

@@ -1,3 +1,12 @@
+@import "./assets/fonts/fonts.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -8,7 +17,6 @@ body {
     scrollbar-gutter: stable;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+[type="radio"] {
+    display: none;
 }
