@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
 export default function ProductsPage({ postData }) {
     return (
         <>
-            <Navigation />
+            <Navigation nonbasicImgPath={`..`}/>
             <Header
                 anchorName="header"
                 title={postData.name}

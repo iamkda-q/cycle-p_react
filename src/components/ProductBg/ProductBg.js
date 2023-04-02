@@ -17,29 +17,28 @@ function ProductBg({ bgImage }) {
 
     const [imgTopOffset, setImgTopOffset] = useState(0);
 
-    function bgScroll() {
-        const productViewPosition =
-            productViewRef.current.getBoundingClientRect().top;
-        const productBgRefHeight =
-            productBgRef.current.getBoundingClientRect().height;
-        const clientHeight = document.documentElement.clientHeight;
-        if (productViewPosition < clientHeight) {
-            const relativeMove =
-                (clientHeight - productViewPosition) /
-                (clientHeight + parseInt(productViewHeight));
-            setImgTopOffset(
-                relativeMove *
-                    (parseInt(productViewHeight) - productBgRefHeight)
-            );
-        }
-    }
     useEffect(() => {
-        // window.addEventListener("scroll", bgScroll);
-        console.log("монтирование");
+        function bgScroll() {
+            const productViewPosition =
+                productViewRef.current.getBoundingClientRect().top;
+            const productBgRefHeight =
+                productBgRef.current.getBoundingClientRect().height;
+            const clientHeight = document.documentElement.clientHeight;
+            if (productViewPosition < clientHeight) {
+                const relativeMove =
+                    (clientHeight - productViewPosition) /
+                    (clientHeight + parseInt(productViewHeight));
+                setImgTopOffset(
+                    relativeMove *
+                        (parseInt(productViewHeight) - productBgRefHeight)
+                );
+            }
+        }
+        window.addEventListener("scroll", bgScroll);
         return () => {
-            // window.removeEventListener("scroll", bgScroll);
+            window.removeEventListener("scroll", bgScroll);
         };
-    }, []);
+    }, [productViewHeight]);
 
     return (
         <div
@@ -47,12 +46,12 @@ function ProductBg({ bgImage }) {
             ref={productViewRef}
             style={{ height: productViewHeight }}
         >
-            {" "}
             <Image
                 ref={productBgRef}
                 alt="Фоновое фото меню"
                 src={bgImage}
-                quality={100}
+                loading="eager"
+                // quality={100}
                 className={productBg__background}
                 style={{ bottom: imgTopOffset }}
             />

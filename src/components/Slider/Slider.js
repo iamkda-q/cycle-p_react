@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { slide } from "./Slider.module.scss";
+import { slide, figure } from "./Slider.module.scss";
 import Image from "next/image";
 
 function Slider({ slidesArr, changeTime, children }) {
     const [bg1, setBg1] = useState(slidesArr[0]);
-    const [bg2, setBg2] = useState(slidesArr[-1]);
+    const [bg2, setBg2] = useState(slidesArr[slidesArr.length - 1]);
     const [bgOpacity, setOpacity] = useState(1);
 
     useEffect(() => {
@@ -49,12 +49,11 @@ function Slider({ slidesArr, changeTime, children }) {
                 }}
             >
                 <Image
-                    alt="Background 1"
                     src={bg1}
-                    fill
-                    style={{
-                        objectFit: "cover",
-                    }}
+                    loading="eager"
+                    alt="Background 1"
+                    className={figure}
+                    priority
                 />
             </div>
             <div
@@ -64,12 +63,11 @@ function Slider({ slidesArr, changeTime, children }) {
                 }}
             >
                 <Image
-                    alt="Background 2"
                     src={bg2}
-                    fill
-                    style={{
-                        objectFit: "cover",
-                    }}
+                    loading="eager"
+                    alt="Background 2"
+                    className={figure}
+                    priority
                 />
             </div>
             {children}

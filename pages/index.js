@@ -39,7 +39,6 @@ export default function App() {
 
     const sendEmail = async (e, form) => {
         e.preventDefault();
-        console.log("ты в форме");
         try {
             const res = await emailjs.sendForm(
                 "service_kolizey",

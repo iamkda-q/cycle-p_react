@@ -10,7 +10,7 @@ import pdf from "../../../assets/images/pdf.png";
 function Document({ name, document }) {
     return (
         <li className={docStyles.document}>
-            <Image src={pdf} alt="" className={document__icon} />
+            <Image src={pdf} alt="" loading="eager" className={document__icon} />
             <p className={document__text}>{name}</p>
         </li>
     );

@@ -7,6 +7,7 @@ function ProductMainImg({ image }) {
         <Image
             src={image}
             quality={100}
+            loading="eager"
             alt="Фото продукта"
             className={productMain__figure}
         />

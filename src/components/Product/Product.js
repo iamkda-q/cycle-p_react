@@ -4,7 +4,7 @@ import Section from "../Section/Section";
 import Gallery from "../Gallery/Gallery";
 import Image from "next/image";
 
-function Product({ name, shortD, img, product, setProductInfo }) {
+function Product({ name, shortD, img, product }) {
     return (
         <Section title="О преобразователе" isHiddenOvf={true}>
             <div className={productStyles.product}>
@@ -36,7 +36,6 @@ function Product({ name, shortD, img, product, setProductInfo }) {
                 </div>
                 <Gallery />
             </div>
-            <Image src={img}/>
         </Section>
     );
 }

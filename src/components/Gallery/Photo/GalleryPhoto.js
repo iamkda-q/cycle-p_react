@@ -13,7 +13,12 @@ const GalleryPhoto = ({ id, onChange, value, name, figure }) => {
                 name={name}
             />
             <label htmlFor={id} className={gallery__label}>
-                <Image src={figure} alt="" className={gallery__figure} />
+                <Image
+                    src={figure}
+                    loading="eager"
+                    alt=""
+                    className={gallery__figure}
+                />
             </label>
         </>
     );

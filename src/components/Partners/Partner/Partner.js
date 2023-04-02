@@ -5,7 +5,7 @@ import Image from "next/image";
 function Partner({ name, logo }) {
     return (
         <li className={partner}>
-            <Image src={logo} alt="" className={partner__icon} />
+            <Image src={logo} alt="" loading="eager" className={partner__icon} />
             <p className={partner__text}>{name}</p>
         </li>
     );

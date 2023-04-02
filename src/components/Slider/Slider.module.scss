@@ -11,4 +11,13 @@
     z-index: -1;
     background-position: center;
     transition: opacity linear 1.5s;
+    display: flex;
+    justify-content: center;
+}
+
+.figure {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    object-fit: cover;
 }
