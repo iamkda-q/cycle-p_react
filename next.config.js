@@ -12,7 +12,7 @@ const nextConfig = {
   env: {
     exportStatic: false,
   },
-  // assetPrefix: "./",
+  assetPrefix: process.env.exportStatic ? "./" : "",
     images: {
         unoptimized: true,
     },
