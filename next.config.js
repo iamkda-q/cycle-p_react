@@ -2,32 +2,27 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-    /*   exportPathMap: () => {
-    return {
-      "/": { page: "/" },
-      "/products/:id": { page: "/products" }
-    }
-  }, */
-    // output: 'export',
-    // env: {
-    //   exportStatic: false,
-    // },
-    // assetPrefix: process.env.exportStatic ? "./" : "",
-
+    /* для документов пдф
+    в них почему-то не срабатывает basePath
+    и при экспорте в статику пути ломаются.
+    Для работы в dev basePath закомментить и exportStatic: false*/
+    env: {
+        exportStatic: false, //
+    },
     // basePath: "/out",
     images: {
         unoptimized: true,
     },
     webpack: (config, options) => {
-      config.module.rules.push({
-        test: /\.pdf$/,
-        use: [
-          {
-            loader: 'file-loader',
-          } 
-        ]
-      })
-      return config
+        config.module.rules.push({
+            test: /\.pdf$/,
+            use: [
+                {
+                    loader: "file-loader",
+                },
+            ],
+        });
+        return config;
     },
 };
 

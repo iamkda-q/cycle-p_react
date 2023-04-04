@@ -10,7 +10,11 @@ import pdfIcon from "../../../assets/images/pdf.png";
 function Document({ name, path }) {
     return (
         <li>
-            <a href={path} className={docStyles.document} target="_blank">
+            <a
+                href={process.env.exportStatic ? `/out${path}` : path}
+                className={docStyles.document}
+                target="_blank"
+            >
                 <Image
                     src={pdfIcon}
                     alt=""
