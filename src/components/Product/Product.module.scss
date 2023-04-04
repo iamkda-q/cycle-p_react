@@ -26,7 +26,7 @@
     &__description {
         margin: 0;
         text-align: justify;
-        @include text-style(20px, 160%, black);
+        @include text-style(22px, 160%, black);
         &:first-of-type {
             margin-bottom: 20px;
 
@@ -36,7 +36,7 @@
         }
 
         @media screen and (max-width: 1050px) {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         @media screen and (max-width: $width500) {

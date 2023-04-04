@@ -15,6 +15,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
 }
 
 [type="radio"] {

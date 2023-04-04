@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: center;
         box-shadow: 2px 2px 8px #747a74;
-        @include text-style(32px, 120%, antiquewhite);
+        @include text-style(34px, 120%, antiquewhite);
         this: &;
 
         @media screen and (max-width: $width1050) {
@@ -85,7 +85,7 @@
 
         & a {
             text-decoration: none;
-            @include text-style(30px, 110%, black);
+            @include text-style(32px, 110%, black);
 
             @media screen and (max-width: $width1050) {
                 font-size: $titleFontSize500;
@@ -95,7 +95,7 @@
     }
 
     &__subtitle {
-        @include text-style(20px, 160%, black);
+        @include text-style(22px, 160%, black);
 
         @media screen and (max-width: $width1050) {
             font-size: 18px;

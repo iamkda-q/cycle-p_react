@@ -19,26 +19,28 @@ function ProductBg({ bgImage }) {
 
     useEffect(() => {
         function bgScroll() {
-            const productViewPosition =
-                productViewRef.current.getBoundingClientRect().top;
-            const productBgRefHeight =
-                productBgRef.current.getBoundingClientRect().height;
-            const clientHeight = document.documentElement.clientHeight;
-            if (productViewPosition < clientHeight) {
-                const relativeMove =
-                    (clientHeight - productViewPosition) /
-                    (clientHeight + parseInt(productViewHeight));
-                setImgTopOffset(
-                    relativeMove *
-                        (parseInt(productViewHeight) - productBgRefHeight)
-                );
+            if (productViewRef.current && productBgRef.current) {
+                const productViewPosition =
+                    productViewRef.current.getBoundingClientRect().top;
+                const productBgRefHeight =
+                    productBgRef.current.getBoundingClientRect().height;
+                const clientHeight = document.documentElement.clientHeight;
+                if (productViewPosition < clientHeight) {
+                    const relativeMove =
+                        (clientHeight - productViewPosition) /
+                        (clientHeight + parseInt(productViewHeight));
+                    setImgTopOffset(
+                        relativeMove *
+                            (parseInt(productViewHeight) - productBgRefHeight)
+                    );
+                }
             }
         }
         window.addEventListener("scroll", bgScroll);
         return () => {
             window.removeEventListener("scroll", bgScroll);
         };
-    }, [productViewHeight]);
+    }, []);
 
     return (
         <div

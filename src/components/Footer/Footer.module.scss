@@ -20,11 +20,11 @@
     }
 
     &__info {
-        @include text-style(18px, (24/15 * 100%), $cycle);
+        @include text-style(20px, (24/15 * 100%), $cycle);
         font-style: italic;
 
         @media screen and (max-width: 400px) {
-            font-size: 17px;
+            font-size: 18px;
         }
     }
 }

@@ -54,24 +54,24 @@
             bottom: 30px;
         }
         width: 100%;
-        @include text-style(70px, 130%, antiquewhite);
+        @include text-style(72px, 130%, antiquewhite);
 
         @media screen and (max-width: 1460px) {
-            font-size: 55px;
+            font-size: 57px;
         }
 
         @media screen and (max-width: $width899) {
-            font-size: 37px;
+            font-size: 39px;
             margin-bottom: 15px;
         }
 
         @media screen and (max-width: $width500) {
-            font-size: 33px;
+            font-size: 35px;
             margin-bottom: 0;
         }
 
         @media screen and (max-width: 400px) {
-            font-size: 27px;
+            font-size: 29px;
             margin-bottom: 0;
         }
     }
@@ -81,14 +81,14 @@
         margin: 0 {
             left: 10px;
         }
-        @include text-style(25px, 160%, antiquewhite);
+        @include text-style(27px, 160%, antiquewhite);
 
         @media screen and (max-width: 1460px) {
             width: 60%;
         }
 
         @media screen and (max-width: $width899) {
-            font-size: 18px;
+            font-size: 20px;
             width: 100%;
         }
 

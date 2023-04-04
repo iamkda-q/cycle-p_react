@@ -1,3 +1,4 @@
+import React from "react";
 import { numbers } from "./constants.module.scss";
 import uniqid from "uniqid";
 
@@ -66,7 +67,7 @@ const productsBase = {
         //         name: (
         //     <>
         //         Автоматический регулятор дозировочного насоса (АРДН-
-        //         <span className={numbers}>3)</span>
+        //         <span className={numbers}>3</span>)
         //     </>
         // ),
 
@@ -85,6 +86,10 @@ const productsBase = {
            (автоматический регулятор дозировочного насоса) для работы с плунжерным насосом мощностью 0,25-3кВт`,
 
         img: belaz,
+        documents: [
+            { name: "Руководство по эксплуатации", path: "/ARDN-3.pdf" },
+            { name: "РО с комментариями режиссёра", path: "/ARDN-3.pdf" },
+        ],
     },
     provident5: {
         name: "Provident placeat enim assumenda cum",
@@ -141,9 +146,34 @@ function getPostData(id) {
     };
 }
 
-// function convertNumberViewTNR(string) {
-//     const numbers = string.match("В 22:00 я вернулся. Через 10-15 минут я лёг спать")
-//     console.log(numbers);
+// export function convertNumberViewTNR(string) {
+//     const a = string.split(" ").map((b) => {
+//         if (/\d+/g.test(b)) {
+//             return <span className={numbers}>{b}</span>;
+//         } else {
+//             return <>{b}</>;
+//         }
+//     });
+
+//     let v = ``;
+
+//     for(let i = 0; i < a.length; i++) {
+//         v = `${v} ${a[i]} `
+//     }
+
+//     // const replacedNumbers = [...new Set(string.match(/\d+/g))];
+//     // function a ({children}) {
+//     //     return <>{children}</>
+//     // }
+//     // let newString = <a children={string}></a>;
+//     // console.log(newString.props.children);
+
+//     // for (let i = 0; i < replacedNumbers.length; i++) {
+//     //     newString = newString.props.children.replaceAll(replacedNumbers[i], <span>3</span>);
+//     // }
+//     // return newString;
+//     return v
+//     console.log(v);
 // }
 
 export {

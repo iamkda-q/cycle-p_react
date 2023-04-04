@@ -54,10 +54,10 @@
             bottom: 70px;
         }
         position: relative;
-        @include text-style(40px, 121%, black);
+        @include text-style(42px, 121%, black);
 
         @media screen and (max-width: 1050px) {
-            font-size: 33px;
+            font-size: 35px;
             margin-bottom: 40px;
         }
 
@@ -98,11 +98,11 @@
         width: 100%;
         min-height: $buttonHeight;
         background-color: transparent;
-        @include text-style(18px, 122%, #0b5ea7);
+        @include text-style(20px, 122%, #0b5ea7);
         cursor: pointer;
 
         @media screen and (max-width: 1050px) {
-            font-size: 16px;
+            font-size: 18px;
         }
 
         &:hover {
@@ -126,7 +126,7 @@
         visibility: visible;
         opacity: 1;
         display: block;
-        @include text-style(14px, 125%);
+        @include text-style(16px, 125%);
         text-align: center;
         position: absolute;
         top: $buttonHeight + 2px;

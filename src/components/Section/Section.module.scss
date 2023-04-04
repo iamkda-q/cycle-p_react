@@ -40,10 +40,10 @@
             left: $leftMargin;
         }
         max-width: 100%;
-        @include text-style(54px, 130%, black);
+        @include text-style(56px, 130%, black);
 
         @media screen and (max-width: 1256px) {
-            font-size: 46px;
+            font-size: 48px;
             margin: {
                 bottom: 20px;
                 left: $margin1256;
@@ -51,7 +51,7 @@
         }
 
         @media screen and (max-width: 1050px) {
-            font-size: 36px;
+            font-size: 38px;
         }
 
         @media screen and (max-width: $width899) {

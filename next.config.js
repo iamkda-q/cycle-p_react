@@ -2,23 +2,34 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-/*   exportPathMap: () => {
+    /*   exportPathMap: () => {
     return {
       "/": { page: "/" },
       "/products/:id": { page: "/products" }
     }
   }, */
-  output: 'export',
-  env: {
-    exportStatic: false,
-  },
-  assetPrefix: process.env.exportStatic ? "./" : "",
+    // output: 'export',
+    // env: {
+    //   exportStatic: false,
+    // },
+    // assetPrefix: process.env.exportStatic ? "./" : "",
+
+    // basePath: "/out",
     images: {
         unoptimized: true,
     },
-}
-
-
+    webpack: (config, options) => {
+      config.module.rules.push({
+        test: /\.pdf$/,
+        use: [
+          {
+            loader: 'file-loader',
+          } 
+        ]
+      })
+      return config
+    },
+};
 
 module.exports = nextConfig;
 // module.exports = {

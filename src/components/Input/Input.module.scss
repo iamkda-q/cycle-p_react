@@ -20,7 +20,7 @@
             bottom: 1px solid rgba(0, 0, 0, 0.2);
         }
         width: 100%;
-        @include text-style(16px, 121%, black);
+        @include text-style(17px, 121%, black);
         outline: none;
 
         &:last-of-type {
@@ -37,7 +37,7 @@
         opacity: 1;
         display: block;
         margin: 0;
-        @include text-style(14px, 125%, #ff0000);
+        @include text-style(15px, 125%, #ff0000);
         position: absolute;
         top: 32px;
 

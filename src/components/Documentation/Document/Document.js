@@ -5,13 +5,21 @@ import docStyles, {
     document__text,
 } from "./Document.module.scss";
 
-import pdf from "../../../assets/images/pdf.png";
+import pdfIcon from "../../../assets/images/pdf.png";
 
-function Document({ name, document }) {
+function Document({ name, path }) {
     return (
-        <li className={docStyles.document}>
-            <Image src={pdf} alt="" loading="eager" className={document__icon} />
-            <p className={document__text}>{name}</p>
+        <li>
+            <a href={path} className={docStyles.document} target="_blank">
+                <Image
+                    src={pdfIcon}
+                    alt=""
+                    loading="eager"
+                    className={document__icon}
+                />
+                <p className={document__text}>{name}</p>
+                {}
+            </a>
         </li>
     );
 }

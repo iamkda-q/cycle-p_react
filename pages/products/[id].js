@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
+import { app } from "../../src/components/App/App.module.scss";
 import Header from "../../src/components/Header/Header";
 import Product from "../../src/components/Product/Product";
 import Documentation from "../../src/components/Documentation/Documentation";
-import Navigation from "../../src/components/Navigation/Navigation.js";
+import NavBack from "../../src/components/NavBack/NavBack.js";
 import Footer from "../../src/components/Footer/Footer";
 
 import { getAllPostIds, getPostData } from "../../src/utils/constants";
@@ -27,18 +28,21 @@ export async function getStaticProps({ params }) {
 
 export default function ProductsPage({ postData }) {
     return (
-        <>
-            <Navigation nonbasicImgPath={`..`}/>
+        <div className={app}>
+            <NavBack />
             <Header
                 anchorName="header"
                 title={postData.name}
                 subtitle={postData.shortD}
                 page="products"
             />
-            <Product name={postData.name} shortD={postData.shortD} img={postData.img}
+            <Product
+                name={postData.name}
+                shortD={postData.shortD}
+                img={postData.img}
             />
-            <Documentation />
+            <Documentation documentsData={postData.documents} />
             <Footer />
-        </>
+        </div>
     );
 }

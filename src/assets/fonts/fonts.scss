@@ -5,10 +5,17 @@
     font-weight: 400;
 }
 
+// @font-face {
+//     src: url("./Georgia/Georgia-Regular.woff") format("woff"),
+//         url("./Georgia/Georgia-Regular.woff2") format("woff2");
+//     font-family: "Georgia";
+//     font-style: normal;
+//     font-weight: 400;
+// }
+
 @font-face {
-    src: url("./Georgia/Georgia-Regular.woff") format("woff"),
-        url("./Georgia/Georgia-Regular.woff2") format("woff2");
-    font-family: "Georgia";
+    src: url("./Times/TimesNewRomanPSMT.woff") format("woff");
+    font-family: "Times";
     font-style: normal;
     font-weight: 400;
 }

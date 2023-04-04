@@ -9,7 +9,7 @@ import {
 import Logo from "../Logo/Logo";
 import NavigationLink from "./Link/NavigationLink";
 
-function Navigation({ nonbasicImgPath }) {
+function Navigation() {
     const navRef = useRef();
     const [currentAnchor, setAnchor] = useState(null);
     // const [isFontLoad, setFontLoad] = useState(false);
@@ -39,7 +39,7 @@ function Navigation({ nonbasicImgPath }) {
             <nav className={navigation__container}>
                 <ul className={navigation__grid}>
                     <li>
-                        <Logo nonbasicImgPath={nonbasicImgPath} />
+                        <Logo />
                     </li>
                     {menu
                         ? menu.map((menuItem) => (

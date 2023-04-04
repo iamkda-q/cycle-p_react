@@ -3,19 +3,16 @@ import Section from "../Section/Section";
 import Document from "./Document/Document";
 import { iconsGreed } from "./Documentation.module.scss";
 
-function Documentation({ anchorName }) {
+function Documentation({ anchorName, documentsData }) {
     return (
         <Section anchorName={anchorName} title="Документация" isGrey={true}>
             {
                 <ul className={iconsGreed}>
-                    <Document
-                        document={""}
-                        name="Руководство по эксплуатации"
-                    />
-                    <Document
-                        document={""}
-                        name="Руководство по эксплуатации с комметариями режиссёра"
-                    />
+                    {documentsData
+                        ? documentsData.map((documentData) => (
+                              <Document {...documentData} />
+                          ))
+                        : null}
                 </ul>
             }
         </Section>

@@ -38,7 +38,7 @@
     &__link {
         text-decoration: none;
         padding-bottom: 4px;
-        @include text-style(20px, (24/15 * 100%), $cycle);
+        @include text-style(22px, (24/15 * 100%), $cycle);
         transition: 0.2s linear;
         &:hover {
             color: blue;
@@ -53,13 +53,13 @@
         background: white;
 
         #{$this}__link {
-            @include text-style(20px, (24/15 * 100%));
+            @include text-style(22px, (24/15 * 100%));
             &:hover {
                 color: $cycle;
             }
 
             &_checked {
-                @include text-style(20px, (24/15 * 100%), $cycle);
+                @include text-style(22px, (24/15 * 100%), $cycle);
             }
         }
     }
