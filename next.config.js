@@ -2,7 +2,7 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-    /* для документов пдф
+    /* переменная для документов пдф
     в них почему-то не срабатывает basePath
     и при экспорте в статику пути ломаются.
     Для работы в dev basePath закомментить и exportStatic: false*/
