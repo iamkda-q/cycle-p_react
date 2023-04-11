@@ -2,15 +2,17 @@ import React from "react";
 
 import { app } from "../../src/components/App/App.module.scss";
 import Header from "../../src/components/Header/Header";
-import Product from "../../src/components/Product/Product";
-import Documentation from "../../src/components/Documentation/Documentation";
+import Products from "../../src/components/Products/Products";
 import NavBack from "../../src/components/NavBack/NavBack.js";
 import Footer from "../../src/components/Footer/Footer";
 
-import { getAllPostIds, getPostData } from "../../src/utils/routingFunctions";
+import {
+    getSerialIds,
+    getSerialPostData,
+} from "../../src/utils/routingFunctions";
 
 export async function getStaticPaths() {
-    const paths = getAllPostIds();
+    const paths = getSerialIds();
     return {
         paths,
         fallback: false,
@@ -18,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const postData = getPostData(params.id);
+    const postData = getSerialPostData(params.id);
     return {
         props: {
             postData,
@@ -26,7 +28,7 @@ export async function getStaticProps({ params }) {
     };
 }
 
-export default function ProductsPage({ postData }) {
+export default function SerailPage({ postData }) {
     return (
         <div className={app}>
             <NavBack />
@@ -34,12 +36,9 @@ export default function ProductsPage({ postData }) {
                 anchorName="header"
                 title={postData.name}
                 subtitle={postData.shortD}
-                page="products"
+                page="serial"
             />
-            <Product
-                fullD={postData.fullD}
-            />
-            <Documentation documentsData={postData.documents} />
+            <Products />
             <Footer />
         </div>
     );

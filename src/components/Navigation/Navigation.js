@@ -39,7 +39,7 @@ function Navigation() {
             <nav className={navigation__container}>
                 <ul className={navigation__grid}>
                     <li>
-                        <Logo />
+                        <Logo name={true} />
                     </li>
                     {menu
                         ? menu.map((menuItem) => (

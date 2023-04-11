@@ -4,9 +4,10 @@ import {
     footer,
     footer_grey,
     footer__container,
-    footer__info,
-    numbers
+    footer__info
 } from "./Footer.module.scss";
+
+import Logo from "../Logo/Logo";
 
 function Footer({ isGrey }) {
     return (
@@ -14,12 +15,14 @@ function Footer({ isGrey }) {
             id="footer"
             className={`${footer}${isGrey ? ` ${footer_grey}` : ""}`}
         >
+            <Logo />
             <div className={footer__container}>
                 <h3 className={footer__info}>ООО НПП "Цикл Плюс"</h3>
                 <address className={footer__info}>
-                    © <span className={numbers}>1991-2023</span>
+                    © 1991-2023
                 </address>
             </div>
+            <Logo />
         </footer>
     );
 }

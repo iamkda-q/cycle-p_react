@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {
-    productMain,
-    productMain__number,
-    productMain__number_right,
-    productMain__number_left,
-    productMain__container,
-} from "./ProductMain.module.scss";
-import ProductMainInfo from "./Info/ProductMainInfo";
-import ProductMainImg from "./Img/ProductMainImg";
+    industryBranch,
+    industryBranch__number,
+    industryBranch__number_right,
+    industryBranch__number_left,
+    industryBranch__container,
+} from "./IndustryBranch.module.scss";
+import IndustryBranchInfo from "./Info/IndustryBranchInfo";
+import IndustryBranchImg from "./Img/IndustryBranchImg";
 
-function ProductMain({ name, shortD, img, number, link }) {
+function IndustryBranch({ name, shortD, img, number, link }) {
     const [is899, set899] = useState(false);
     useEffect(() => {
         if (+document.documentElement.clientWidth > 899) {
@@ -20,30 +20,30 @@ function ProductMain({ name, shortD, img, number, link }) {
     }, []);
 
     return (
-        <div className={productMain}>
+        <div className={industryBranch}>
             <div
-                className={`${productMain__number} ${
+                className={`${industryBranch__number} ${
                     number % 2 && is899
-                        ? productMain__number_right
-                        : productMain__number_left
+                        ? industryBranch__number_right
+                        : industryBranch__number_left
                 }`}
             >
                 {number}
             </div>
-            <div className={productMain__container}>
+            <div className={industryBranch__container}>
                 {number % 2 && is899 ? (
                     <>
-                        <ProductMainInfo
+                        <IndustryBranchInfo
                             titleText={name}
                             subtitleText={shortD}
                             link={link}
                         />
-                        <ProductMainImg image={img} />
+                        <IndustryBranchImg image={img} />
                     </>
                 ) : (
                     <>
-                        <ProductMainImg image={img} />
-                        <ProductMainInfo
+                        <IndustryBranchImg image={img} />
+                        <IndustryBranchInfo
                             titleText={name}
                             subtitleText={shortD}
                             link={link}
@@ -55,4 +55,4 @@ function ProductMain({ name, shortD, img, number, link }) {
     );
 }
 
-export default ProductMain;
+export default IndustryBranch;

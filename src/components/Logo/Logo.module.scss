@@ -1,10 +1,10 @@
 @import "../../assets/constants.scss";
 
 .logo {
-    @include text-style(34px, 1.2, red, "Gothic", italic);
+    @include text-style(34px, 1.2, $cycle, "Gothic", italic);
     text: {
         decoration: none 5px;
-        shadow: 1px 2px 3px rgb(21, 8, 71);
+        // shadow: 1px 2px 3px rgb(21, 8, 71);
     }
 
     display: flex;
@@ -12,8 +12,9 @@
     align-items: center;
 
     &__img {
-        width: 40px;
-        height: 40px;
+        /* соотношение должно быть 4(w)/3(h) */
+        width: 80px;
+        height: 60px;
         object-fit: contain;
         margin-right: 0px;
     }

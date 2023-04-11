@@ -18,7 +18,7 @@ function NavBack() {
             <nav className={navigation__container}>
                 <ul className={navigation__grid}>
                     <li>
-                        <Logo />
+                        <Logo name={true}/>
                     </li>
                     <li>
                         <Link href="/" title="Назад на главную" className={navigation__link}>

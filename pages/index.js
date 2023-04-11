@@ -7,7 +7,7 @@ import { company } from "../src/utils/constants";
 
 import Header from "../src/components/Header/Header";
 import Navigation from "../src/components/Navigation/Navigation.js";
-import Products from "../src/components/Products/Products";
+import Branches from "../src/components/Branches/Branches";
 import About from "../src/components/About/About";
 import Partners from "../src/components/Partners/Partners";
 import Contacts from "../src/components/Contacts/Contacts";
@@ -78,7 +78,7 @@ export default function App() {
                     title={companyName}
                     subtitle={company.mission}
                 />
-                <Products anchorName="products" />
+                <Branches anchorName="branches" />
                 <About anchorName="about" />
                 <Partners anchorName="partners" />
                 <Contacts anchorName="contacts" openForm={openForm} />

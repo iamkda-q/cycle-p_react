@@ -3,6 +3,9 @@
 .footer {
     max-width: 100vw;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &_grey {
         background-color: $greyBack;
@@ -12,7 +15,7 @@
         min-height: 100px;
         max-width: 1560px;
         padding: 5px 40px;
-        margin: 0 auto;
+        // margin: 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: center;

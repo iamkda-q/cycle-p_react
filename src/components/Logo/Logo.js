@@ -4,19 +4,19 @@ import Link from "next/link";
 
 import { logo, logo__img } from "./Logo.module.scss";
 
-import train from "../../assets/images/train4.jpg";
+import logoImg from "../../../public/logo/logo.png";
 
-function Logo() {
+function Logo( {name}) {
     return (
         <Link href="/" className={logo}>
             <Image
                 width="10"
                 height="10"
                 className={logo__img}
-                src={train}
-                alt="mini train"
+                src={logoImg}
+                alt="logo"
             />
-            Цикл Плюс
+            <h4 style={{marginLeft: name ? "20px" : "0"}}>{name ? `ЦИКЛ ПЛЮС` : ""}</h4>
         </Link>
     );
 }

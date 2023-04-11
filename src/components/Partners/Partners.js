@@ -3,9 +3,11 @@ import Section from "../Section/Section";
 import Partner from "./Partner/Partner";
 import { iconsGreed } from "./Partners.module.scss";
 
-
-import vectorLogo from "../../assets/images/vectorLogo.png";
-import zteoLogo from "../../assets/images/zteoLogo3.png";
+import vectorLogo from "../../../public/logo/vectorLogo.png";
+import zteoLogo from "../../../public/logo/zteoLogo.png";
+import spmLogo from "../../../public/logo/spmLogo.png";
+import mpeiLogo from "../../../public/logo/mpeiLogo.png";
+import yauzaLogo from "../../../public/logo/yauzaLogo.jpg";
 
 function Partners({ anchorName }) {
     return (
@@ -16,6 +18,18 @@ function Partners({ anchorName }) {
                     <Partner
                         logo={zteoLogo}
                         name="ЗАО «ПТФК»ЗТЭО» Завод транспортного электрооборудования"
+                    />
+                    <Partner
+                        logo={mpeiLogo}
+                        name="Московский энергетический институт"
+                    />
+                    <Partner
+                        logo={spmLogo}
+                        name="«Специальные проекты машиностроения»"
+                    />
+                    <Partner
+                        logo={yauzaLogo}
+                        name="«ЯузаМоторс-М»"
                     />
                 </ul>
             }

@@ -7,12 +7,13 @@ const nextConfig = {
     и при экспорте в статику пути ломаются.
     Для работы в dev basePath закомментить и exportStatic: false*/
     env: {
-        exportStatic: false, //
+        exportStatic: false, 
     },
-    // basePath: "/out",
+    // basePath: "/cycle-dep",
     images: {
         unoptimized: true,
     },
+    
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.pdf$/,

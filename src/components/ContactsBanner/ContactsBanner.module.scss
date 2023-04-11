@@ -170,7 +170,7 @@
         }
 
         &_address {
-            @include icon(url(../../assets/images/address.png));
+            @include icon(url(../../../public/address.png));
 
             @media screen and (max-width: $width700) {
                 grid-column-start: 1;
@@ -193,7 +193,7 @@
         }
 
         &_email {
-            @include icon(url(../../assets/images/mailIcon.png));
+            @include icon(url(../../../public/mailIcon.png));
 
             @media screen and (max-width: $width700) {
                 justify-self: end;
@@ -211,7 +211,7 @@
         }
 
         &_phone {
-            @include icon(url(../../assets/images/phoneIcon.png));
+            @include icon(url(../../../public/phoneIcon.png));
 
             @media screen and (max-width: $width700) {
                 justify-self: start;

@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import { productMain__figure } from "../ProductMain.module.scss";
+import { industryBranch__figure } from "../IndustryBranch.module.scss";
 
-function ProductMainImg({ image }) {
+function IndustryBranchImg({ image }) {
     return (
         <Image
             src={image}
             quality={100}
             loading="eager"
             alt="Фото продукта"
-            className={productMain__figure}
+            className={industryBranch__figure}
         />
     );
 }
 
-export default ProductMainImg;
+export default IndustryBranchImg;

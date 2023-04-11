@@ -1,23 +1,23 @@
 import React from "react";
-import { products } from "./Products.module.scss";
-import ProductBg from "../ProductBg/ProductBg";
-import ProductMain from "../ProductMain/ProductMain";
+import { branches } from "./Branches.module.scss";
+import MovingBg from "../MovingBg/MovingBg";
+import IndustryBranch from "../IndustryBranch/IndustryBranch";
 
 import { productsBase, mainBgs } from "../../utils/constants.js";
 
-function Products({ anchorName }) {
+function Branches({ anchorName }) {
     return (
-        <section className={products} id={`${anchorName}`}>
+        <section className={branches} id={`${anchorName}`}>
             <ul>
                 {productsBase
                     ? Object.keys(productsBase).map((key, i) => (
                           <li key={key} style={{listStyle: "none"}}>
-                              <ProductMain
+                              <IndustryBranch
                                   {...productsBase[key]}
                                   number={i + 1}
                                   link={key}
                               />
-                              <ProductBg bgImage={mainBgs[i]} />
+                              <MovingBg bgImage={mainBgs[i]} />
                           </li>
                       ))
                     : null}
@@ -26,4 +26,4 @@ function Products({ anchorName }) {
     );
 }
 
-export default Products;
+export default Branches;

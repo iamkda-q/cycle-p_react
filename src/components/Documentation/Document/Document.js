@@ -5,13 +5,13 @@ import docStyles, {
     document__text,
 } from "./Document.module.scss";
 
-import pdfIcon from "../../../assets/images/pdf.png";
+import pdfIcon from "../../../../public/pdf.png";
 
 function Document({ name, path }) {
     return (
         <li>
             <a
-                href={process.env.exportStatic ? `/out${path}` : path}
+                href={process.env.exportStatic ? `/cycle-dep${path}` : path}
                 className={docStyles.document}
                 target="_blank"
             >

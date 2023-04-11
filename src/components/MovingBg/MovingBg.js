@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { productBg, productBg__background } from "./ProductBg.module.scss";
+import { movingBg, movingBg__background } from "./MovingBg.module.scss";
 
-function ProductBg({ bgImage }) {
+function MovingBg({ bgImage }) {
     const productViewRef = useRef();
     const [productViewHeight, setProductViewHeight] = useState("200px");
-    const productBgRef = useRef();
+    const movingBgRef = useRef();
 
     useEffect(() => {
         if (+document.documentElement.clientWidth > 899) {
@@ -19,11 +19,11 @@ function ProductBg({ bgImage }) {
 
     useEffect(() => {
         function bgScroll() {
-            if (productViewRef.current && productBgRef.current) {
+            if (productViewRef.current && movingBgRef.current) {
                 const productViewPosition =
                     productViewRef.current.getBoundingClientRect().top;
-                const productBgRefHeight =
-                    productBgRef.current.getBoundingClientRect().height;
+                const movingBgRefHeight =
+                    movingBgRef.current.getBoundingClientRect().height;
                 const clientHeight = document.documentElement.clientHeight;
                 if (productViewPosition < clientHeight) {
                     const relativeMove =
@@ -31,7 +31,7 @@ function ProductBg({ bgImage }) {
                         (clientHeight + parseInt(productViewHeight));
                     setImgTopOffset(
                         relativeMove *
-                            (parseInt(productViewHeight) - productBgRefHeight)
+                            (parseInt(productViewHeight) - movingBgRefHeight)
                     );
                 }
             }
@@ -44,21 +44,21 @@ function ProductBg({ bgImage }) {
 
     return (
         <div
-            className={productBg}
+            className={movingBg}
             ref={productViewRef}
             style={{ height: productViewHeight }}
         >
             <Image
-                ref={productBgRef}
+                ref={movingBgRef}
                 alt="Фоновое фото меню"
                 src={bgImage}
                 loading="eager"
                 // quality={100}
-                className={productBg__background}
+                className={movingBg__background}
                 style={{ bottom: imgTopOffset }}
             />
         </div>
     );
 }
 
-export default ProductBg;
+export default MovingBg;

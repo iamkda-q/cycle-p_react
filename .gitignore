@@ -11,6 +11,7 @@
 # production
 /build
 /out
+/cycle-dep
 
 # misc
 .DS_Store
