@@ -12,6 +12,7 @@ function Slider({ slidesArr, changeTime, children }) {
             setOpacity((prev) => (prev === 1 ? 0 : 1));
         }
         function changeBg(opacity) {
+            if (!slidesArr.length || slidesArr.length === 1) return
             const lastSlide = slidesArr.length - 1;
             if (!opacity) {
                 setBg1((prevBg) =>
@@ -32,6 +33,7 @@ function Slider({ slidesArr, changeTime, children }) {
             }
         }
         async function change(opacity) {
+            if (!slidesArr.length || slidesArr.length === 1) return
             await changeBg(opacity);
             changeOpacity();
         }

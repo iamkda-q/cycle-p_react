@@ -3,7 +3,7 @@ import { YMaps } from "@pbe/react-yandex-maps";
 import emailjs from "@emailjs/browser";
 import { app } from "../src/components/App/App.module.scss";
 
-import { company } from "../src/utils/constants";
+import { headerSlides, company } from "../src/utils/constants";
 
 import Header from "../src/components/Header/Header";
 import Navigation from "../src/components/Navigation/Navigation.js";
@@ -77,6 +77,7 @@ export default function App() {
                     anchorName="header"
                     title={companyName}
                     subtitle={company.mission}
+                    bgImages={headerSlides}
                 />
                 <Branches anchorName="branches" />
                 <About anchorName="about" />

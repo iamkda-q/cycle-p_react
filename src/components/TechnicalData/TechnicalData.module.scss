@@ -1,0 +1,37 @@
+@import "../../assets/constants.scss";
+
+.technical {
+    margin: 0 auto;
+    display: grid;
+    width: 65vw;
+    grid-template-columns: 1fr 0.3fr;
+    grid-template-rows: auto;
+    background-color: $cycleDark;
+    grid-gap: 1px;
+
+    &__child {
+        @include text-style(26px, 160%, $cycleDarkest);
+        background-color: white;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+
+        &_name {
+            padding-left: 20px;
+        }
+
+        &_value {
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 1050px) {
+            font-size: 22px;
+        }
+
+        @media screen and (max-width: $width500) {
+            font-size: $mainFontSize500;;
+        }
+    }
+}

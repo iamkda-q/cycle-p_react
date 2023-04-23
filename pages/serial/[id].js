@@ -35,10 +35,11 @@ export default function SerailPage({ postData }) {
             <Header
                 anchorName="header"
                 title={postData.name}
-                subtitle={postData.shortD}
+                // subtitle={postData.shortD}
                 page="serial"
+                bgImages={postData.headerBg}
             />
-            <Products />
+            <Products base={postData.products} />
             <Footer />
         </div>
     );

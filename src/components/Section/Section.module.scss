@@ -35,12 +35,13 @@
     }
 
     &__title {
+        padding: 0 10px;
         margin: 0 {
             bottom: 40px;
             left: $leftMargin;
         }
         max-width: 100%;
-        @include text-style(56px, 130%, black);
+        @include text-style(56px, 130%, $cycleDark);
 
         @media screen and (max-width: 1256px) {
             font-size: 48px;

@@ -1,4 +1,8 @@
-$cycle: rgba(1,73,168);
+$cycle: #014AA8;
+$cycleDark: #20497E;
+$cycleDarkest: #00306D;
+$cycleLight: #367BD3;
+$cycleLightest: #6092D3;
 $greyBack: #f6f6f6;
 $appPaddingTop: 40px;
 $maxWidth: 1920px;
@@ -34,7 +38,7 @@ $arial: "Arial";
     line-height: $line-height;
 }
 
-@mixin shaiding {
+@mixin shaiding ($opacity: 0.6){
     content: "";
     display: block;
     width: 100%;
@@ -42,7 +46,7 @@ $arial: "Arial";
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, $opacity);
 }
 
 .numbers {

@@ -4,10 +4,13 @@ import { app } from "../../src/components/App/App.module.scss";
 import Header from "../../src/components/Header/Header";
 import Product from "../../src/components/Product/Product";
 import Documentation from "../../src/components/Documentation/Documentation";
+import TechnicalData from "../../src/components/TechnicalData/TechnicalData";
 import NavBack from "../../src/components/NavBack/NavBack.js";
 import Footer from "../../src/components/Footer/Footer";
 
 import { getAllPostIds, getPostData } from "../../src/utils/routingFunctions";
+import { headerSlides } from "../../src/utils/constants";
+
 
 export async function getStaticPaths() {
     const paths = getAllPostIds();
@@ -35,11 +38,14 @@ export default function ProductsPage({ postData }) {
                 title={postData.name}
                 subtitle={postData.shortD}
                 page="products"
+                bgImages={postData.headerBg}
             />
             <Product
                 fullD={postData.fullD}
+                img={postData.img.img}
             />
-            <Documentation documentsData={postData.documents} />
+            {postData.documents ? <Documentation data={postData.documents}/> : null}
+            {postData.parameters ? <TechnicalData data={postData.parameters}/> : null}
             <Footer />
         </div>
     );

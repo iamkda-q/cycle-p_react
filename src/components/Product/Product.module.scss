@@ -6,7 +6,6 @@
     grid-template-columns: 1.2fr 1fr;
     gap: 0 30px;
     align-items: center;
-    @include text-style(30px, 110%, black);
     margin-left: $leftMargin;
 
     @media screen and (max-width: $width1450) {
@@ -26,7 +25,7 @@
     &__description {
         margin: 0;
         text-align: justify;
-        @include text-style(22px, 160%, black);
+        @include text-style(22px, 160%, $cycleDarkest);
         &:first-of-type {
             margin-bottom: 20px;
 
@@ -40,7 +39,13 @@
         }
 
         @media screen and (max-width: $width500) {
-            @include text-style($mainFontSize500, 145%, black);
+            @include text-style($mainFontSize500, 145%, $cycleDarkest);
         }
+    }
+    &__img {
+        width: 75%;
+        align-self: center;
+        justify-self: center;
+        height: auto;
     }
 }

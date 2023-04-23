@@ -3,14 +3,14 @@ import Section from "../Section/Section";
 import Document from "./Document/Document";
 import { iconsGreed } from "./Documentation.module.scss";
 
-function Documentation({ anchorName, documentsData }) {
+function Documentation({ anchorName, data }) {
     return (
         <Section anchorName={anchorName} title="Документация" isGrey={true}>
             {
                 <ul className={iconsGreed}>
-                    {documentsData
-                        ? documentsData.map((documentData) => (
-                              <Document {...documentData} />
+                    {data
+                        ? data.map((document, i) => (
+                              <Document key={i} {...document} />
                           ))
                         : null}
                 </ul>

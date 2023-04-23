@@ -7,10 +7,6 @@
     align-items: center;
     row-gap: 20px;
 
-    // @media screen and (max-width: 512px) {
-    //     row-gap: 20px;
-    // }
-
     &__icon {
         width: auto;
         height: 70px;
@@ -24,7 +20,7 @@
 
     &__text {
         margin: 0;
-        @include text-style(18px, 121%, black);
+        @include text-style(18px, 121%, $cycleDarkest);
         text-align: center;
         letter-spacing: 0.06em;
 

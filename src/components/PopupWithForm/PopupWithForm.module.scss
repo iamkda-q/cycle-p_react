@@ -54,7 +54,7 @@
             bottom: 70px;
         }
         position: relative;
-        @include text-style(42px, 121%, black);
+        @include text-style(42px, 121%, $cycleDarkest);
 
         @media screen and (max-width: 1050px) {
             font-size: 35px;
@@ -93,12 +93,12 @@
     }
 
     &__sendButton {
-        border: 1px solid #0b5ea7;
+        border: 1px solid $cycle;
         border-radius: 0px 20px;
         width: 100%;
         min-height: $buttonHeight;
         background-color: transparent;
-        @include text-style(20px, 122%, #0b5ea7);
+        @include text-style(20px, 122%, $cycle);
         cursor: pointer;
 
         @media screen and (max-width: 1050px) {

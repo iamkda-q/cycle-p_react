@@ -1,4 +1,4 @@
-import { productsBase, serialProducts } from "./constants";
+import { productsBase, branchesBase } from "./productsBase/productBase";
 
 export function getAllPostIds() {
     return Object.keys(productsBase).map((key) => {
@@ -18,7 +18,7 @@ export function getPostData(id) {
 }
 
 export function getSerialIds() {
-    return Object.keys(serialProducts).map((key) => {
+    return Object.keys(branchesBase).map((key) => {
         return {
             params: {
                 id: key,
@@ -30,6 +30,6 @@ export function getSerialIds() {
 export function getSerialPostData(id) {
     return {
         id,
-        ...serialProducts[id],
+        ...branchesBase[id],
     };
 }
