@@ -11,7 +11,6 @@ import Footer from "../../src/components/Footer/Footer";
 import { getAllPostIds, getPostData } from "../../src/utils/routingFunctions";
 import { headerSlides } from "../../src/utils/constants";
 
-
 export async function getStaticPaths() {
     const paths = getAllPostIds();
     return {
@@ -40,13 +39,24 @@ export default function ProductsPage({ postData }) {
                 page="products"
                 bgImages={postData.headerBg}
             />
-            <Product
-                fullD={postData.fullD}
-                img={postData.img.img}
+            <Product fullD={postData.fullD} img={postData.img.img} />
+            {postData.parameters ? (
+                <TechnicalData data={postData.parameters} isGrey={true} />
+            ) : null}
+            {postData.documents ? (
+                <Documentation
+                    data={postData.documents}
+                    isGrey={postData.parameters ? false : true}
+                />
+            ) : null}
+            <Footer
+                isGrey={
+                    (postData.parameters && postData.documents) ||
+                    (!postData.parameters && !postData.documents)
+                        ? true
+                        : false
+                }
             />
-            {postData.documents ? <Documentation data={postData.documents}/> : null}
-            {postData.parameters ? <TechnicalData data={postData.parameters}/> : null}
-            <Footer />
         </div>
     );
 }

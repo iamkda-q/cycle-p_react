@@ -3,9 +3,9 @@ import Section from "../Section/Section";
 import Document from "./Document/Document";
 import { iconsGreed } from "./Documentation.module.scss";
 
-function Documentation({ anchorName, data }) {
+function Documentation({ anchorName, data, isGrey }) {
     return (
-        <Section anchorName={anchorName} title="Документация" isGrey={true}>
+        <Section anchorName={anchorName} title="Документация" isGrey={isGrey}>
             {
                 <ul className={iconsGreed}>
                     {data

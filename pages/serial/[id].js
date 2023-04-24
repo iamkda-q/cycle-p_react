@@ -31,7 +31,12 @@ export async function getStaticProps({ params }) {
 export default function SerailPage({ postData }) {
     return (
         <div className={app}>
-            <NavBack />
+            <NavBack
+                hrefData={[
+                    { name: "К продукции", href: "/serial" },
+                    { name: "На главную", href: "/" },
+                ]}
+            />
             <Header
                 anchorName="header"
                 title={postData.name}

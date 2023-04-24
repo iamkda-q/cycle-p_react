@@ -26,6 +26,10 @@
             text-align: center;
         }
 
+        &_grey {
+            background-color: $greyBack;
+        }
+
         @media screen and (max-width: 1050px) {
             font-size: 22px;
         }

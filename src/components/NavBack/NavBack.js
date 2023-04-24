@@ -9,7 +9,7 @@ import {
 import Logo from "../Logo/Logo";
 import Link from "next/link";
 
-function NavBack() {
+function NavBack({hrefData}) {
     return (
         <div
             className={`${navigation} ${navigation_sticky}`}
@@ -20,11 +20,14 @@ function NavBack() {
                     <li>
                         <Logo name={true}/>
                     </li>
-                    <li>
-                        <Link href="/" title="Назад на главную" className={navigation__link}>
-                            Назад на главную
+                    {hrefData ? hrefData.map((item, i) => (
+                        <li key={i}>
+                        <Link href={item.href} title={item.name} className={navigation__link}>
+                            {item.name}
                         </Link>
                     </li>
+                    )) : null}
+                    
                 </ul>
             </nav>
         </div>
